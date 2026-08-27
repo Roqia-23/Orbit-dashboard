@@ -1,0 +1,28 @@
+/*ORBIT DASHBOARD - Main Styles */
+
+/* ---------- CSS Variables ---------- */
+:root {
+    --bg-primary: #0A0E17;
+    --bg-secondary: #0F1420;
+    --text-primary: #EDEFF7;
+    --text-secondary: #8B92AC;
+    --accent-blue: #6C8EFF;
+    --accent-star: #FFB86B;
+}
+
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(ellipse at 50% 30%, var(--bg-secondary) 0%, var(--bg-primary) 65%);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
