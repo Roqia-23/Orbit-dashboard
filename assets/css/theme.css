@@ -1,33 +1,70 @@
-/* ============================================
-   ORBIT DASHBOARD - Light / Dark Theme
-   ============================================ */
-
 /* ---------- Light Mode ---------- */
 body.light-mode {
-  --bg-primary: #f0f2f8;
-  --bg-secondary: #ffffff;
-  --text-primary: #1a1d2e;
-  --text-secondary: #4a4f66;
-  --bg-soft: rgba(0, 0, 0, 0.04);
-  --border-glass: rgba(0, 0, 0, 0.08);
-  --ring-color: rgba(108, 142, 255, 0.2);
+    --bg-primary: #F0F2F8;
+    --bg-secondary: #FFFFFF;
+    --text-primary: #1A1D2E;
+    --text-secondary: #4A4F66;
+    --bg-soft: rgba(0,0,0,0.04);
+    --border-glass: rgba(0,0,0,0.08);
+    --ring-color: rgba(108,142,255,0.3);
+    --card-bg: rgba(255,255,255,0.8);
+    --shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 
+/* Light mode - Wordmark */
 body.light-mode .wordmark {
-  background: linear-gradient(180deg, #1a1d2e 0%, #4a4f66 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(180deg, #1A1D2E 0%, #4A4F66 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
+/* Light mode - Core */
 body.light-mode .core {
-  box-shadow: 0 0 24px 6px rgba(255, 184, 107, 0.3);
+    box-shadow: 0 0 24px 6px rgba(255,184,107,0.3);
 }
 
+/* Light mode - Rings */
+body.light-mode .ring {
+    border-color: rgba(108,142,255,0.25);
+}
+
+body.light-mode .ring--2 {
+    border-color: rgba(108,142,255,0.2);
+}
+
+body.light-mode .ring--3 {
+    border-color: rgba(108,142,255,0.15);
+}
+
+/* Light mode - Nodes */
+body.light-mode .node {
+    background: #4A6FFF;
+    box-shadow: 0 0 10px 2px rgba(74,111,255,0.4);
+}
+
+body.light-mode .ring--2 .node {
+    background: #6C8EFF;
+    box-shadow: 0 0 8px 2px rgba(108,142,255,0.3);
+}
+
+body.light-mode .ring--3 .node {
+    background: #FFB86B;
+    box-shadow: 0 0 10px 2px rgba(255,184,107,0.3);
+}
+
+/* Light mode - Stars */
+body.light-mode .star {
+    background: #4A4F66;
+    opacity: 0.3;
+}
+
+/* Light mode - CTA */
 body.light-mode .cta {
-  background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,255,0.7);
 }
 
+/* Light mode - Theme Toggle */
 body.light-mode .theme-toggle-btn {
-  background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,255,0.7);
 }
