@@ -1,0 +1,33 @@
+/* ============================================
+   ORBIT DASHBOARD - Light / Dark Theme
+   ============================================ */
+
+/* ---------- Light Mode ---------- */
+body.light-mode {
+  --bg-primary: #f0f2f8;
+  --bg-secondary: #ffffff;
+  --text-primary: #1a1d2e;
+  --text-secondary: #4a4f66;
+  --bg-soft: rgba(0, 0, 0, 0.04);
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --ring-color: rgba(108, 142, 255, 0.2);
+}
+
+body.light-mode .wordmark {
+  background: linear-gradient(180deg, #1a1d2e 0%, #4a4f66 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.light-mode .core {
+  box-shadow: 0 0 24px 6px rgba(255, 184, 107, 0.3);
+}
+
+body.light-mode .cta {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+body.light-mode .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.7);
+}
