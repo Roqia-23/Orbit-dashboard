@@ -8,23 +8,57 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
         rel="stylesheet" />
-
-        <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <div class="container text-center mt-5">
-        <h1>ORBIT</h1>
-        <p>Your tasks, notes, and habits — all pulled into one calm center.</p>
-        <a href="dashboard.html" class="btn btn-primary">Enter Dashboard</a>
+    <div class="stage">
+        <div class="eyebrow">
+            <i class="fas fa-rocket me-2"></i> Productivity, Orbited
+        </div>
+        <h1 class="wordmark">ORBIT</h1>
+
+        <!-- Orbit System -->
+        <div class="orbit-system" aria-hidden="true">
+            <div class="core"></div>
+            <div class="ring ring--1">
+                <div class="node"></div>
+            </div>
+            <div class="ring ring--2">
+                <div class="node"></div>
+            </div>
+            <div class="ring ring--3">
+                <div class="node"></div>
+            </div>
+        </div>
+
+        <p class="tagline">
+            <i class="fas fa-tasks me-2 text-primary"></i>
+            Your tasks, notes, and habits — all pulled into one calm center.
+        </p>
+
+        <a href="dashboard.html" class="cta">
+            <i class="fas fa-arrow-right me-2"></i> Enter Dashboard
+        </a>
+
+        <div class="mt-4 d-flex gap-3 flex-wrap justify-content-center">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                <i class="fas fa-check-circle me-1"></i> Tasks
+            </span>
+            <span class="badge bg-warning bg-opacity-10 text-warning px-3 py-2">
+                <i class="fas fa-sticky-note me-1"></i> Notes
+            </span>
+            <span class="badge bg-success bg-opacity-10 text-success px-3 py-2">
+                <i class="fas fa-heart me-1"></i> Habits
+            </span>
+        </div>
     </div>
 </body>
 
