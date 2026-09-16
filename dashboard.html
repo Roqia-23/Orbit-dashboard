@@ -18,7 +18,44 @@
 
 <body>
 
-    
+    <!-- Starfield -->
+    <div id="stars"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar glass-nav" id="mainNavbar">
+        <div class="navbar-container">
+
+            <div class="navbar-left">
+                <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <a class="navbar-brand" href="index.html" id="brandLogo">
+                    <div class="brand-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <span>ORBIT</span>
+                </a>
+            </div>
+
+            <!-- RIGHT: Search + Notifications + Theme -->
+            <div class="navbar-right">
+                <div class="search-box" id="searchBox">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="globalSearch" placeholder="Search..." autocomplete="off" />
+                </div>
+                <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-dot" id="notificationBadge"></span>
+                </button>
+
+                <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
 </body>
 
 </html>
