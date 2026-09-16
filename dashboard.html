@@ -22,43 +22,45 @@
     <div id="stars"></div>
 
     <!-- NAVBAR -->
-    <nav class="navbar glass-nav" id="mainNavbar">
-        <div class="navbar-container">
+    <header>
+        <nav class="navbar glass-nav" id="mainNavbar">
+            <div class="navbar-container">
 
-            <div class="navbar-left">
-                <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <a class="navbar-brand" href="index.html" id="brandLogo">
-                    <div class="brand-icon">
-                        <i class="fas fa-circle"></i>
-                    </div>
-                    <span>ORBIT</span>
-                </a>
-            </div>
-
-            <!-- RIGHT: Search + Notifications + Theme -->
-            <div class="navbar-right">
-                <div class="search-box" id="searchBox">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="globalSearch" placeholder="Search..." autocomplete="off" />
+                <div class="navbar-left">
+                    <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <a class="navbar-brand" href="index.html" id="brandLogo">
+                        <div class="brand-icon">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <span>ORBIT</span>
+                    </a>
                 </div>
-                <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge-dot" id="notificationBadge"></span>
-                </button>
 
-                <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <!-- RIGHT: Search + Notifications + Theme -->
+                <div class="navbar-right">
+                    <div class="search-box" id="searchBox">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="globalSearch" placeholder="Search..." autocomplete="off" />
+                    </div>
+                    <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-dot" id="notificationBadge"></span>
+                    </button>
+
+                    <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+
             </div>
-
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- SIDEBAR -->
     <input type="checkbox" id="sidebarCheckbox" class="sidebar-checkbox" hidden />
-    
+
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-profile" id="userProfile">
             <div class="profile-avatar" id="profileAvatar">
@@ -69,7 +71,7 @@
                 <small id="userStatus">Welcome to ORBIT</small>
             </div>
         </div>
-    
+
         <ul class="sidebar-menu" id="sidebarMenu">
             <li class="menu-label">MAIN</li>
             <li>
@@ -99,10 +101,10 @@
                     <span class="menu-count" id="habitsCount">0</span>
                 </a>
             </li>
-    
+
             <li class="divider"></li>
             <li class="menu-label">OTHER</li>
-    
+
             <li>
                 <a href="#" id="navStats">
                     <i class="fas fa-chart-line"></i>
@@ -122,7 +124,7 @@
                 </a>
             </li>
         </ul>
-    
+
         <div class="focus-widget" id="focusWidget">
             <i class="fas fa-clock"></i>
             <div>
@@ -136,12 +138,12 @@
     <label for="sidebarCheckbox" class="sidebar-overlay" id="sidebarOverlay"></label>
 
     <main class="main-content" id="mainContent">
-    
+
         <div class="welcome-section" id="welcomeSection">
             <h1 id="welcomeTitle">Welcome back! 👋</h1>
             <p id="welcomeSubtitle">Here's your productivity overview</p>
         </div>
-    
+
         <!-- Stats -->
         <div class="stats-grid" id="statsSection">
             <div class="stat-card" id="statCardTotal">
@@ -153,7 +155,7 @@
                     <span>Total Tasks</span>
                 </div>
             </div>
-    
+
             <div class="stat-card" id="statCardDone">
                 <div class="stat-icon" style="background: rgba(34,197,94,0.1); color: #22C55E;">
                     <i class="fas fa-check-circle"></i>
@@ -163,7 +165,7 @@
                     <span>Completed</span>
                 </div>
             </div>
-    
+
             <div class="stat-card" id="statCardPending">
                 <div class="stat-icon" style="background: rgba(255,184,107,0.1); color: #FFB86B;">
                     <i class="fas fa-clock"></i>
@@ -174,7 +176,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!-- Widgets -->
         <div class="widgets-grid">
             <div class="widget-card" id="recentTasksWidget">
@@ -189,7 +191,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="widget-card" id="recentNotesWidget">
                 <div class="widget-header">
                     <h5><i class="fas fa-sticky-note text-warning me-2"></i> Recent Notes</h5>
@@ -202,7 +204,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="widget-card widget-full" id="todayHabitsWidget">
                 <div class="widget-header">
                     <h5><i class="fas fa-heart text-danger me-2"></i> Today's Habits</h5>
