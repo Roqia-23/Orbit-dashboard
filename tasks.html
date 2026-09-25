@@ -225,6 +225,78 @@
 
 </main>
 
+<!-- ADD/EDIT TASK MODAL -->
+
+<div class="task-modal-overlay" id="taskModal">
+    <div class="task-modal">
+        <div class="task-modal-header">
+            <h3 id="modalTitle">Add New Task</h3>
+            <button class="task-modal-close" id="closeModalBtn" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <form class="task-modal-body" id="taskForm">
+            <!-- Task Title -->
+            <div class="form-group">
+                <label for="taskTitle">Task Title *</label>
+                <input type="text" id="taskTitle" placeholder="e.g. Design new logo" maxlength="100"
+                    autocomplete="off" />
+                <small class="error-msg" id="titleError"></small>
+            </div>
+
+            <!-- Task Description -->
+            <div class="form-group">
+                <label for="taskDescription">Description</label>
+                <textarea id="taskDescription" placeholder="Add more details (optional)" rows="3"
+                    maxlength="500"></textarea>
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+                <label>Priority</label>
+                <div class="priority-selector" id="prioritySelector">
+                    <label class="priority-option">
+                        <input type="radio" name="priority" value="low" id="priorityLow" />
+                        <span class="priority-pill low">
+                            <i class="fas fa-flag"></i> Low
+                        </span>
+                    </label>
+                    <label class="priority-option">
+                        <input type="radio" name="priority" value="medium" id="priorityMedium" checked />
+                        <span class="priority-pill medium">
+                            <i class="fas fa-flag"></i> Medium
+                        </span>
+                    </label>
+                    <label class="priority-option">
+                        <input type="radio" name="priority" value="high" id="priorityHigh" />
+                        <span class="priority-pill high">
+                            <i class="fas fa-flag"></i> High
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Due Date -->
+            <div class="form-group">
+                <label for="taskDueDate">Due Date</label>
+                <input type="date" id="taskDueDate" />
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" id="cancelBtn">
+                    Cancel
+                </button>
+                <button type="submit" class="btn-save" id="saveBtn">
+                    <i class="fas fa-check"></i>
+                    <span id="saveBtnText">Save Task</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
    
          <!-- SCRIPTS -->
         
