@@ -67,6 +67,80 @@
     
         </div>
     </nav>
+<input type="checkbox" id="sidebarCheckbox" class="sidebar-checkbox" hidden />
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-profile" id="userProfile">
+        <div class="profile-avatar" id="profileAvatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="profile-info">
+            <strong id="userName">Guest User</strong>
+            <small id="userStatus">Welcome to ORBIT</small>
+        </div>
+    </div>
+
+    <ul class="sidebar-menu" id="sidebarMenu">
+        <li class="menu-label">MAIN</li>
+        <li>
+            <a href="dashboard.html" id="navDashboard">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="tasks.html" class="active" id="navTasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+                <span class="menu-count" id="tasksCount">0</span>
+            </a>
+        </li>
+        <li>
+            <a href="notes.html" id="navNotes">
+                <i class="fas fa-sticky-note"></i>
+                <span>Notes</span>
+                <span class="menu-count" id="notesCount">0</span>
+            </a>
+        </li>
+        <li>
+            <a href="habits.html" id="navHabits">
+                <i class="fas fa-heart"></i>
+                <span>Habits</span>
+                <span class="menu-count" id="habitsCount">0</span>
+            </a>
+        </li>
+
+        <li class="divider"></li>
+        <li class="menu-label">OTHER</li>
+
+        <li>
+            <a href="#" id="navStats">
+                <i class="fas fa-chart-line"></i>
+                <span>Statistics</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" id="navSettings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" id="navHelp">
+                <i class="fas fa-question-circle"></i>
+                <span>Help</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="focus-widget" id="focusWidget">
+        <i class="fas fa-clock"></i>
+        <div>
+            <strong id="focusTime">0h Focus</strong>
+            <small>Today's session</small>
+        </div>
+    </div>
+</aside>
 
 
    
