@@ -30,13 +30,13 @@
 <body>
     <!-- Starfield -->
     <div id="stars"></div>
-
     
-         <!-- NAVBAR (same as dashboard) -->
-
+    
+    <!-- NAVBAR (same as dashboard) -->
+    
     <nav class="navbar glass-nav" id="mainNavbar">
         <div class="navbar-container">
-
+    
             <div class="navbar-left">
                 <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
@@ -48,276 +48,26 @@
                     <span>ORBIT</span>
                 </a>
             </div>
-
+    
             <div class="navbar-right">
                 <div class="search-box" id="searchBox">
                     <i class="fas fa-search"></i>
                     <input type="text" id="globalSearch" placeholder="Search tasks..." autocomplete="off" />
                 </div>
-
+    
                 <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
                     <i class="fas fa-bell"></i>
                     <span class="badge-dot" id="notificationBadge"></span>
                 </button>
-
+    
                 <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
-
+    
         </div>
     </nav>
 
-   
-         <!-- SIDEBAR -->
-        
-    <input type="checkbox" id="sidebarCheckbox" class="sidebar-checkbox" hidden />
-
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-profile" id="userProfile">
-            <div class="profile-avatar" id="profileAvatar">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="profile-info">
-                <strong id="userName">Guest User</strong>
-                <small id="userStatus">Welcome to ORBIT</small>
-            </div>
-        </div>
-
-        <ul class="sidebar-menu" id="sidebarMenu">
-            <li class="menu-label">MAIN</li>
-            <li>
-                <a href="dashboard.html" id="navDashboard">
-                    <i class="fas fa-th-large"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="tasks.html" class="active" id="navTasks">
-                    <i class="fas fa-tasks"></i>
-                    <span>Tasks</span>
-                    <span class="menu-count" id="tasksCount">0</span>
-                </a>
-            </li>
-            <li>
-                <a href="notes.html" id="navNotes">
-                    <i class="fas fa-sticky-note"></i>
-                    <span>Notes</span>
-                    <span class="menu-count" id="notesCount">0</span>
-                </a>
-            </li>
-            <li>
-                <a href="habits.html" id="navHabits">
-                    <i class="fas fa-heart"></i>
-                    <span>Habits</span>
-                    <span class="menu-count" id="habitsCount">0</span>
-                </a>
-            </li>
-
-            <li class="divider"></li>
-            <li class="menu-label">OTHER</li>
-
-            <li>
-                <a href="#" id="navStats">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Statistics</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="navSettings">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="navHelp">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Help</span>
-                </a>
-            </li>
-        </ul>
-
-        <div class="focus-widget" id="focusWidget">
-            <i class="fas fa-clock"></i>
-            <div>
-                <strong id="focusTime">0h Focus</strong>
-                <small>Today's session</small>
-            </div>
-        </div>
-    </aside>
-
-    <label for="sidebarCheckbox" class="sidebar-overlay" id="sidebarOverlay"></label>
-
-   
-         <!-- MAIN CONTENT -->
-        
-    <main class="main-content" id="mainContent">
-
-        <!-- Page Header -->
-        <div class="page-header" id="pageHeader">
-            <div>
-                <h1 id="pageTitle">Tasks</h1>
-                <p id="pageSubtitle">Manage your daily tasks and stay productive</p>
-            </div>
-            <button class="btn-add-task" id="addTaskBtn">
-                <i class="fas fa-plus"></i>
-                <span>Add Task</span>
-            </button>
-        </div>
-
-        <!-- Stats Row -->
-        <div class="tasks-stats" id="tasksStats">
-            <div class="mini-stat" id="miniStatTotal">
-                <i class="fas fa-tasks" style="color: #6C8EFF;"></i>
-                <div>
-                    <strong id="totalStat">0</strong>
-                    <small>Total</small>
-                </div>
-            </div>
-            <div class="mini-stat" id="miniStatDone">
-                <i class="fas fa-check-circle" style="color: #22C55E;"></i>
-                <div>
-                    <strong id="doneStat">0</strong>
-                    <small>Done</small>
-                </div>
-            </div>
-            <div class="mini-stat" id="miniStatPending">
-                <i class="fas fa-clock" style="color: #FFB86B;"></i>
-                <div>
-                    <strong id="pendingStat">0</strong>
-                    <small>Pending</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Filters -->
-        <div class="filters-bar" id="filtersBar">
-            <div class="filter-tabs" id="filterTabs">
-                <button class="filter-btn active" data-filter="all" id="filterAll">
-                    <i class="fas fa-list"></i> All
-                </button>
-                <button class="filter-btn" data-filter="pending" id="filterPending">
-                    <i class="fas fa-clock"></i> Pending
-                </button>
-                <button class="filter-btn" data-filter="completed" id="filterCompleted">
-                    <i class="fas fa-check-circle"></i> Completed
-                </button>
-            </div>
-
-            <div class="sort-dropdown">
-                <i class="fas fa-sort"></i>
-                <select id="sortSelect">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                    <option value="az">A → Z</option>
-                    <option value="za">Z → A</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Tasks List -->
-        <div class="tasks-container" id="tasksContainer">
-            <div class="tasks-list" id="tasksList">
-                <!-- Tasks will be rendered here by JS -->
-                <div class="empty-state" id="tasksEmptyState">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h3>No tasks yet</h3>
-                    <p>Click "Add Task" to create your first task</p>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-   
-         <!-- ADD/EDIT TASK MODAL -->
-        
-    <div class="task-modal-overlay" id="taskModal">
-        <div class="task-modal">
-            <div class="task-modal-header">
-                <h3 id="modalTitle">Add New Task</h3>
-                <button class="task-modal-close" id="closeModalBtn" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <form class="task-modal-body" id="taskForm">
-                <!-- Task Title -->
-                <div class="form-group">
-                    <label for="taskTitle">Task Title *</label>
-                    <input type="text" id="taskTitle" placeholder="e.g. Design new logo" maxlength="100"
-                        autocomplete="off" />
-                    <small class="error-msg" id="titleError"></small>
-                </div>
-
-                <!-- Task Description -->
-                <div class="form-group">
-                    <label for="taskDescription">Description</label>
-                    <textarea id="taskDescription" placeholder="Add more details (optional)" rows="3"
-                        maxlength="500"></textarea>
-                </div>
-
-                <!-- Priority -->
-                <div class="form-group">
-                    <label>Priority</label>
-                    <div class="priority-selector" id="prioritySelector">
-                        <label class="priority-option">
-                            <input type="radio" name="priority" value="low" id="priorityLow" />
-                            <span class="priority-pill low">
-                                <i class="fas fa-flag"></i> Low
-                            </span>
-                        </label>
-                        <label class="priority-option">
-                            <input type="radio" name="priority" value="medium" id="priorityMedium" checked />
-                            <span class="priority-pill medium">
-                                <i class="fas fa-flag"></i> Medium
-                            </span>
-                        </label>
-                        <label class="priority-option">
-                            <input type="radio" name="priority" value="high" id="priorityHigh" />
-                            <span class="priority-pill high">
-                                <i class="fas fa-flag"></i> High
-                            </span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Due Date -->
-                <div class="form-group">
-                    <label for="taskDueDate">Due Date</label>
-                    <input type="date" id="taskDueDate" />
-                </div>
-
-                <!-- Actions -->
-                <div class="form-actions">
-                    <button type="button" class="btn-cancel" id="cancelBtn">
-                        Cancel
-                    </button>
-                    <button type="submit" class="btn-save" id="saveBtn">
-                        <i class="fas fa-check"></i>
-                        <span id="saveBtnText">Save Task</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-   
-         <!-- CONFIRM DELETE MODAL -->
-        
-    <div class="confirm-overlay" id="deleteConfirmModal">
-        <div class="confirm-box">
-            <div class="confirm-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h3>Delete Task?</h3>
-            <p>This action cannot be undone.</p>
-            <div class="confirm-actions">
-                <button class="btn-cancel" id="cancelDeleteBtn">Cancel</button>
-                <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
-            </div>
-        </div>
-    </div>
 
    
          <!-- SCRIPTS -->
