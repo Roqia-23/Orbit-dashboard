@@ -1,40 +1,29 @@
 
 
-// ============================================
 // GLOBAL VARIABLES
-// ============================================
-// let tasks = [];
 let currentFilter = "all";
 let currentSort = "newest";
 let editingTaskId = null;
 let deletingTaskId = null;
 
-// ============================================
 // 1. LOAD TASKS FROM LOCALSTORAGE
-// ============================================
 function loadTasks() {
   tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
   console.log("📦 Tasks loaded:", tasks.length);
 }
 
-// ============================================
 // 2. SAVE TASKS TO LOCALSTORAGE
-// ============================================
 function saveTasks() {
   localStorage.setItem("orbit-tasks", JSON.stringify(tasks));
   console.log("💾 Tasks saved:", tasks.length);
 }
 
-// ============================================
 // 3. GENERATE UNIQUE ID
-// ============================================
 function generateId() {
   return Date.now() + Math.floor(Math.random() * 1000);
 }
 
-// ============================================
 // 4. UPDATE STATS
-// ============================================
 function updateStats() {
   const total = tasks.length;
   const done = tasks.filter((t) => t.completed).length;
@@ -49,9 +38,7 @@ function updateStats() {
   if (sidebarCount) sidebarCount.textContent = total;
 }
 
-// ============================================
 // 5. FORMAT DATE
-// ============================================
 function formatDate(dateString) {
   if (!dateString) return "";
 
@@ -76,9 +63,7 @@ function formatDate(dateString) {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-// ============================================
 // 6. ESCAPE HTML (Security)
-// ============================================
 function escapeHtml(text) {
   if (!text) return "";
   const div = document.createElement("div");
@@ -86,9 +71,7 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-// ============================================
 // 7. GET FILTERED AND SORTED TASKS
-// ============================================
 function getFilteredTasks() {
   let filtered = [...tasks];
 
@@ -118,9 +101,7 @@ function getFilteredTasks() {
   return filtered;
 }
 
-// ============================================
 // 8. RENDER TASKS
-// ============================================
 function renderTasks() {
   const list = document.getElementById("tasksList");
   if (!list) return;
@@ -227,9 +208,7 @@ function renderTasks() {
     .join("");
 }
 
-// ============================================
 // 9. TOGGLE TASK COMPLETE
-// ============================================
 function toggleTask(id) {
   const task = tasks.find((t) => t.id === id);
   if (!task) return;
@@ -245,9 +224,7 @@ function toggleTask(id) {
   );
 }
 
-// ============================================
 // 10. OPEN ADD MODAL
-// ============================================
 function openAddModal() {
   editingTaskId = null;
 
@@ -271,9 +248,7 @@ function openAddModal() {
   }, 300);
 }
 
-// ============================================
 // 11. OPEN EDIT MODAL
-// ============================================
 function openEditModal(id) {
   const task = tasks.find((t) => t.id === id);
   if (!task) return;
@@ -300,17 +275,13 @@ function openEditModal(id) {
   }, 300);
 }
 
-// ============================================
 // 12. CLOSE MODAL
-// ============================================
 function closeModal() {
   document.getElementById("taskModal").classList.remove("show");
   editingTaskId = null;
 }
 
-// ============================================
 // 13. HANDLE FORM SUBMIT
-// ============================================
 function handleSubmit(e) {
   e.preventDefault();
 
@@ -366,25 +337,19 @@ function handleSubmit(e) {
   closeModal();
 }
 
-// ============================================
 // 14. OPEN DELETE CONFIRM
-// ============================================
 function openDeleteConfirm(id) {
   deletingTaskId = id;
   document.getElementById("deleteConfirmModal").classList.add("show");
 }
 
-// ============================================
 // 15. CLOSE DELETE CONFIRM
-// ============================================
 function closeDeleteConfirm() {
   document.getElementById("deleteConfirmModal").classList.remove("show");
   deletingTaskId = null;
 }
 
-// ============================================
 // 16. CONFIRM DELETE
-// ============================================
 function confirmDelete() {
   if (!deletingTaskId) return;
 
@@ -399,9 +364,7 @@ function confirmDelete() {
   console.log("🗑️ Task deleted:", task ? task.title : "Unknown");
 }
 
-// ============================================
 // 17. INIT FILTERS
-// ============================================
 function initFilters() {
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -427,9 +390,7 @@ function initFilters() {
   }
 }
 
-// ============================================
 // 18. INIT SEARCH
-// ============================================
 function initSearch() {
   const searchInput = document.getElementById("globalSearch");
   if (!searchInput) return;
@@ -492,9 +453,7 @@ function initSearch() {
   });
 }
 
-// ============================================
 // 19. INIT KEYBOARD SHORTCUTS
-// ============================================
 function initKeyboardShortcuts() {
   document.addEventListener("keydown", (e) => {
     // Escape to close modals
@@ -505,9 +464,7 @@ function initKeyboardShortcuts() {
   });
 }
 
-// ============================================
 // 20. INIT EVENT LISTENERS
-// ============================================
 function initEventListeners() {
   // Add task button
   const addBtn = document.getElementById("addTaskBtn");
@@ -550,9 +507,7 @@ function initEventListeners() {
   }
 }
 
-// ============================================
 // 21. INITIALIZE PAGE
-// ============================================
 document.addEventListener("DOMContentLoaded", () => {
   console.log("🌌 Tasks page starting...");
 
