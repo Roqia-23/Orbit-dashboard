@@ -28,16 +28,6 @@
   }
 })();
 
-// Console Welcome 
-console.log("🌌 ORBIT — Welcome to the productivity orbit!");
-console.log("🚀 Built with ❤️ and JavaScript");
-console.log("📊 Features: Tasks | Notes | Habits");
-
-
-   //ORBIT DASHBOARD - Complete Logic
-let tasks = [];
-let notes = [];
-let habits = [];
 
 // 1. بارگذاری داده‌ها
 function loadData() {

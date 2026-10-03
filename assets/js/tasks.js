@@ -1,6 +1,7 @@
 
 
 // GLOBAL VARIABLES
+let tasks=[];
 let currentFilter = "all";
 let currentSort = "newest";
 let editingTaskId = null;
