@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORBIT — Notes</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="assets/css/notes.css" />
+</head>
+
+<body>
+    <!-- Starfield -->
+    <div id="stars"></div>
+
+    <!-- ============================================
+         NAVBAR
+         ============================================ -->
+    <nav class="navbar glass-nav" id="mainNavbar">
+        <div class="navbar-container">
+
+            <div class="navbar-left">
+                <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <a class="navbar-brand" href="index.html" id="brandLogo">
+                    <div class="brand-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <span>ORBIT</span>
+                </a>
+            </div>
+
+            <div class="navbar-right">
+                <div class="search-box" id="searchBox">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="globalSearch" placeholder="Search notes..." autocomplete="off" />
+                </div>
+
+                <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge-dot" id="notificationBadge"></span>
+                </button>
+
+                <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ============================================
+         SIDEBAR
+         ============================================ -->
+    <input type="checkbox" id="sidebarCheckbox" class="sidebar-checkbox" hidden />
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-profile" id="userProfile">
+            <div class="profile-avatar" id="profileAvatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <strong id="userName">Guest User</strong>
+                <small id="userStatus">Welcome to ORBIT</small>
+            </div>
+        </div>
+
+        <ul class="sidebar-menu" id="sidebarMenu">
+            <li class="menu-label">MAIN</li>
+            <li>
+                <a href="dashboard.html" id="navDashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="tasks.html" id="navTasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                    <span class="menu-count" id="tasksCount">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="notes.html" class="active" id="navNotes">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notes</span>
+                    <span class="menu-count" id="notesCount">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="habits.html" id="navHabits">
+                    <i class="fas fa-heart"></i>
+                    <span>Habits</span>
+                    <span class="menu-count" id="habitsCount">0</span>
+                </a>
+            </li>
+
+            <li class="divider"></li>
+            <li class="menu-label">OTHER</li>
+
+            <li>
+                <a href="#" id="navStats">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="navSettings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="navHelp">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="focus-widget" id="focusWidget">
+            <i class="fas fa-clock"></i>
+            <div>
+                <strong id="focusTime">0h Focus</strong>
+                <small>Today's session</small>
+            </div>
+        </div>
+    </aside>
+
+    <label for="sidebarCheckbox" class="sidebar-overlay" id="sidebarOverlay"></label>
+
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
+    <main class="main-content" id="mainContent">
+
+        <!-- Page Header -->
+        <div class="page-header" id="pageHeader">
+            <div>
+                <h1 id="pageTitle">Notes</h1>
+                <p id="pageSubtitle">Capture your thoughts, ideas, and inspiration</p>
+            </div>
+            <button class="btn-add-note" id="addNoteBtn">
+                <i class="fas fa-plus"></i>
+                <span>New Note</span>
+            </button>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="notes-stats" id="notesStats">
+            <div class="mini-stat" id="miniStatTotal">
+                <i class="fas fa-sticky-note" style="color: #FFB86B;"></i>
+                <div>
+                    <strong id="totalNotesStat">0</strong>
+                    <small>Total Notes</small>
+                </div>
+            </div>
+            <div class="mini-stat" id="miniStatPinned">
+                <i class="fas fa-thumbtack" style="color: #6C8EFF;"></i>
+                <div>
+                    <strong id="pinnedNotesStat">0</strong>
+                    <small>Pinned</small>
+                </div>
+            </div>
+            <div class="mini-stat" id="miniStatWeek">
+                <i class="fas fa-calendar-week" style="color: #22C55E;"></i>
+                <div>
+                    <strong id="weekNotesStat">0</strong>
+                    <small>This Week</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters & Sort -->
+        <div class="filters-bar" id="filtersBar">
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" data-filter="all" id="filterAll">
+                    <i class="fas fa-list"></i> All
+                </button>
+                <button class="filter-btn" data-filter="pinned" id="filterPinned">
+                    <i class="fas fa-thumbtack"></i> Pinned
+                </button>
+                <button class="filter-btn" data-filter="recent" id="filterRecent">
+                    <i class="fas fa-clock"></i> Recent
+                </button>
+            </div>
+
+            <div class="sort-dropdown">
+                <i class="fas fa-sort"></i>
+                <select id="sortSelect">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Notes Grid -->
+        <div class="notes-container" id="notesContainer">
+            <div class="notes-grid" id="notesGrid">
+                <!-- Notes will be rendered here by JS -->
+
+                <div class="empty-state" id="notesEmptyState">
+                    <i class="fas fa-sticky-note"></i>
+                    <h3>No notes yet</h3>
+                    <p>Click "New Note" to write your first note</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================
+         ADD/EDIT NOTE MODAL
+         ============================================ -->
+    <div class="note-modal-overlay" id="noteModal">
+        <div class="note-modal">
+            <div class="note-modal-header">
+                <h3 id="modalTitle">New Note</h3>
+                <button class="note-modal-close" id="closeModalBtn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form class="note-modal-body" id="noteForm">
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="noteTitle">Title *</label>
+                    <input type="text" id="noteTitle" placeholder="e.g. Meeting ideas" maxlength="100"
+                        autocomplete="off" />
+                    <small class="error-msg" id="titleError"></small>
+                </div>
+
+                <!-- Content -->
+                <div class="form-group">
+                    <label for="noteContent">Content *</label>
+                    <textarea id="noteContent" placeholder="Write your thoughts here..." rows="8"
+                        maxlength="2000"></textarea>
+                    <small class="error-msg" id="contentError"></small>
+                    <small class="char-counter" id="charCounter">0 / 2000</small>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                    <label for="noteCategory">Category</label>
+                    <select id="noteCategory">
+                        <option value="personal">👤 Personal</option>
+                        <option value="work">💼 Work</option>
+                        <option value="ideas">💡 Ideas</option>
+                        <option value="study">📚 Study</option>
+                        <option value="other">📌 Other</option>
+                    </select>
+                </div>
+
+                <!-- Pin Option -->
+                <div class="form-group">
+                    <label class="pin-toggle">
+                        <input type="checkbox" id="notePinned" />
+                        <span class="pin-toggle-ui">
+                            <i class="fas fa-thumbtack"></i>
+                            <span>Pin this note to top</span>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn-save" id="saveBtn">
+                        <i class="fas fa-check"></i>
+                        <span id="saveBtnText">Save Note</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CONFIRM DELETE MODAL
+         ============================================ -->
+    <div class="confirm-overlay" id="deleteConfirmModal">
+        <div class="confirm-box">
+            <div class="confirm-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Delete Note?</h3>
+            <p>This action cannot be undone.</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" id="cancelDeleteBtn">Cancel</button>
+                <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         VIEW NOTE MODAL
+         ============================================ -->
+    <div class="view-modal-overlay" id="viewNoteModal">
+        <div class="view-modal">
+            <div class="view-modal-header">
+                <div class="view-meta">
+                    <span class="category-badge" id="viewCategory">
+                        <i class="fas fa-folder"></i>
+                        <span>Personal</span>
+                    </span>
+                    <span class="view-date" id="viewDate">Sep 15, 2026</span>
+                </div>
+                <button class="note-modal-close" id="closeViewBtn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="view-modal-body">
+                <h2 id="viewTitle">Note Title</h2>
+                <div class="view-content" id="viewContent">Note content goes here...</div>
+            </div>
+            <div class="view-modal-footer">
+                <button class="btn-cancel" id="viewCloseBtn">
+                    Close
+                </button>
+                <button class="btn-save" id="viewEditBtn">
+                    <i class="fas fa-pen"></i>
+                    Edit Note
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/notes.js"></script>
+</body>
+
+</html>
