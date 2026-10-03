@@ -1,5 +1,4 @@
 
-
 // GLOBAL VARIABLES
 let tasks=[];
 let currentFilter = "all";

@@ -1,5 +1,6 @@
 
 
+
 let notes = [];
 let currentFilter = "all";
 let currentSort = "newest";

@@ -2713,13 +2713,13 @@ body.light-mode .confirm-overlay {
     gap: 6px;
 }
 
-/* ============================================
+/*
    ORBIT HABITS - Page Styles
-   ============================================ */
+ */
 
-/* ============================================
+/*
    PAGE HEADER
-   ============================================ */
+ */
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -2750,7 +2750,7 @@ body.light-mode .confirm-overlay {
     padding: 12px 24px;
     border-radius: 12px;
     border: none;
-    background: linear-gradient(135deg, #EF4444, var(--accent-star));
+    background: linear-gradient(135deg, var(--accent-star), var(--accent-blue));
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -2769,9 +2769,9 @@ body.light-mode .confirm-overlay {
     transform: translateY(0);
 }
 
-/* ============================================
+/*
    TODAY BANNER
-   ============================================ */
+ */
 .today-banner {
     display: flex;
     justify-content: space-between;
@@ -2855,9 +2855,9 @@ body.light-mode .confirm-overlay {
     box-shadow: 0 0 12px rgba(108,142,255,0.5);
 }
 
-/* ============================================
+/*
    MINI STATS
-   ============================================ */
+ */
 .habits-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2908,9 +2908,9 @@ body.light-mode .confirm-overlay {
     letter-spacing: 0.05em;
 }
 
-/* ============================================
+/*
    FILTERS BAR
-   ============================================ */
+ */
 .filters-bar {
     display: flex;
     justify-content: space-between;
@@ -3002,9 +3002,9 @@ body.light-mode .confirm-overlay {
     white-space: nowrap;
 }
 
-/* ============================================
+/*
    HABITS CONTAINER
-   ============================================ */
+ */
 .habits-container {
     min-height: 300px;
 }
@@ -3015,9 +3015,9 @@ body.light-mode .confirm-overlay {
     gap: 16px;
 }
 
-/* ============================================
+/*
    HABIT CARD
-   ============================================ */
+ */
 .habit-card {
     position: relative;
     padding: 20px;
@@ -3159,9 +3159,9 @@ body.light-mode .confirm-overlay {
     background: rgba(239,68,68,0.1);
 }
 
-/* ============================================
+/*
    WEEK TRACKER (7 days)
-   ============================================ */
+ */
 .week-tracker {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -3241,9 +3241,9 @@ body.light-mode .confirm-overlay {
     pointer-events: none;
 }
 
-/* ============================================
+/*
    PROGRESS BAR
-   ============================================ */
+ */
 .habit-progress {
     display: flex;
     align-items: center;
@@ -3276,9 +3276,9 @@ body.light-mode .confirm-overlay {
     text-align: right;
 }
 
-/* ============================================
+/*
    EMPTY STATE
-   ============================================ */
+ */
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -3305,9 +3305,9 @@ body.light-mode .confirm-overlay {
     font-size: 14px;
 }
 
-/* ============================================
+/*
    HABIT MODAL
-   ============================================ */
+ */
 .habit-modal-overlay {
     position: fixed;
     inset: 0;
@@ -3619,9 +3619,9 @@ body.light-mode .confirm-overlay {
     box-shadow: 0 8px 20px rgba(239,68,68,0.3);
 }
 
-/* ============================================
+/*
    CONFIRM DELETE MODAL
-   ============================================ */
+ */
 .confirm-overlay {
     position: fixed;
     inset: 0;
@@ -3695,9 +3695,9 @@ body.light-mode .confirm-overlay {
     justify-content: center;
 }
 
-/* ============================================
+/*
    RESPONSIVE
-   ============================================ */
+ */
 @media (max-width: 991px) {
     .habits-stats {
         grid-template-columns: 1fr;
@@ -3788,9 +3788,9 @@ body.light-mode .confirm-overlay {
     }
 }
 
-/* ============================================
+/*
    LIGHT MODE ADJUSTMENTS
-   ============================================ */
+ */
 body.light-mode .habit-modal-overlay,
 body.light-mode .confirm-overlay {
     background: rgba(0,0,0,0.4);
