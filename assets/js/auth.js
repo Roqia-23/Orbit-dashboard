@@ -2,18 +2,18 @@
    ORBIT AUTH - Login & Signup Logic
    ============================================ */
 
-// ============================================
+
 // DOM ELEMENTS
-// ============================================
+
 const tabLogin = document.getElementById("tabLogin");
 const tabSignup = document.getElementById("tabSignup");
 const tabIndicator = document.getElementById("tabIndicator");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
 
-// ============================================
+
 // TAB SWITCHING
-// ============================================
+
 function switchTab(tab) {
   console.log("🔄 Switching to tab:", tab);
 
@@ -76,9 +76,9 @@ document.querySelectorAll("[data-switch]").forEach((link) => {
   });
 });
 
-// ============================================
+
 // PASSWORD TOGGLE (Show/Hide)
-// ============================================
+
 document.querySelectorAll(".password-toggle").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -97,9 +97,9 @@ document.querySelectorAll(".password-toggle").forEach((btn) => {
   });
 });
 
-// ============================================
+
 // PASSWORD STRENGTH
-// ============================================
+
 const signupPasswordInput = document.getElementById("signupPassword");
 const passwordStrengthEl = document.getElementById("passwordStrength");
 const strengthTextEl = document.getElementById("strengthText");
@@ -154,9 +154,9 @@ function calculateStrength(password) {
   return Math.min(score, 4);
 }
 
-// ============================================
+
 // ERROR HELPERS
-// ============================================
+
 function showError(inputId, errorId, message) {
   const input = document.getElementById(inputId);
   const error = document.getElementById(errorId);
@@ -198,9 +198,9 @@ function clearAllErrors() {
   });
 }
 
-// ============================================
+
 // VALIDATION
-// ============================================
+
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -213,9 +213,9 @@ function isValidPassword(password) {
   return password.length >= 6;
 }
 
-// ============================================
+
 // SIGNUP HANDLER
-// ============================================
+
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -355,9 +355,9 @@ signupForm.addEventListener("submit", (e) => {
   }, 800);
 });
 
-// ============================================
+
 // LOGIN HANDLER
-// ============================================
+
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -450,9 +450,9 @@ loginForm.addEventListener("submit", (e) => {
   }, 800);
 });
 
-// ============================================
+
 // FORGOT PASSWORD
-// ============================================
+
 const forgotLink = document.getElementById("forgotPasswordLink");
 if (forgotLink) {
   forgotLink.addEventListener("click", (e) => {
@@ -466,9 +466,9 @@ if (forgotLink) {
   });
 }
 
-// ============================================
+
 // SHAKE ANIMATION (injected)
-// ============================================
+
 const shakeStyle = document.createElement("style");
 shakeStyle.textContent = `
     @keyframes shake {
@@ -482,9 +482,9 @@ shakeStyle.textContent = `
 `;
 document.head.appendChild(shakeStyle);
 
-// ============================================
+
 // AUTO-FILL FROM REMEMBER ME
-// ============================================
+
 document.addEventListener("DOMContentLoaded", () => {
   const remembered = localStorage.getItem("orbit-remember-user");
   if (remembered) {

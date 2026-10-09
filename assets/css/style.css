@@ -3804,13 +3804,13 @@ body.light-mode .day-check {
     background: rgba(0,0,0,0.03);
 }
 
-/* ============================================
+/*
    ORBIT AUTH - Login & Signup Styles
-   ============================================ */
+ */
 
-/* ============================================
+/*
    BASE
-   ============================================ */
+ */
 body.auth-page {
     min-height: 100vh;
     display: flex;
@@ -3821,9 +3821,9 @@ body.auth-page {
     position: relative;
 }
 
-/* ============================================
+/*
    ANIMATED GRADIENT BACKGROUND
-   ============================================ */
+ */
 .auth-bg {
     position: fixed;
     inset: 0;
@@ -3880,9 +3880,9 @@ body.auth-page {
     }
 }
 
-/* ============================================
+/*
    AUTH WRAPPER
-   ============================================ */
+ */
 .auth-wrapper {
     position: relative;
     z-index: 2;
@@ -3891,9 +3891,9 @@ body.auth-page {
     animation: rise 0.8s ease forwards;
 }
 
-/* ============================================
+/*
    AUTH CARD (Glassmorphism)
-   ============================================ */
+ */
 .auth-card {
     position: relative;
     padding: 40px 36px;
@@ -3941,9 +3941,9 @@ body.light-mode .auth-card {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
-/* ============================================
+/*
    LOGO
-   ============================================ */
+ */
 .auth-logo {
     text-align: center;
     margin-bottom: 32px;
@@ -3995,9 +3995,9 @@ body.light-mode .auth-card {
     margin: 0;
 }
 
-/* ============================================
+/*
    TABS
-   ============================================ */
+ */
 .auth-tabs {
     position: relative;
     display: flex;
@@ -4062,9 +4062,9 @@ body.light-mode .auth-tabs {
     transform: translateX(100%);
 }
 
-/* ============================================
+/*
    FORMS CONTAINER (Sliding)
-   ============================================ */
+ */
 .auth-forms {
     position: relative;
     overflow: hidden;
@@ -4093,9 +4093,9 @@ body.light-mode .auth-tabs {
     opacity: 0;
 }
 
-/* ============================================
+/*
    FORM GROUPS
-   ============================================ */
+ */
 .form-group {
     margin-bottom: 18px;
 }
@@ -4110,9 +4110,9 @@ body.light-mode .auth-tabs {
     letter-spacing: 0.08em;
 }
 
-/* ============================================
+/*
    INPUT WRAPPER (Fixed padding)
-   ============================================ */
+ */
 .input-wrapper {
     position: relative;
     display: flex;
@@ -4204,9 +4204,9 @@ body.light-mode .auth-tabs {
     color: var(--text-primary);
 }
 
-/* ============================================
+/*
    ERROR MESSAGE
-   ============================================ */
+ */
 .error-msg {
     display: block;
     font-size: 11px;
@@ -4225,9 +4225,9 @@ body.light-mode .auth-tabs {
     transform: translateY(0);
 }
 
-/* ============================================
+/*
    PASSWORD STRENGTH
-   ============================================ */
+ */
 .password-strength {
     display: flex;
     gap: 4px;
@@ -4277,9 +4277,9 @@ body.light-mode .auth-tabs {
 .strength-text.strong { color: #22C55E; }
 .strength-text.very-strong { color: #6C8EFF; }
 
-/* ============================================
+/*
    FORM ROW (Checkbox + Link)
-   ============================================ */
+ */
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -4362,9 +4362,9 @@ body.light-mode .auth-tabs {
     text-decoration: underline;
 }
 
-/* ============================================
+/*
    AUTH BUTTON
-   ============================================ */
+ */
 .btn-auth {
     position: relative;
     width: 100%;
@@ -4432,9 +4432,9 @@ body.light-mode .auth-tabs {
     display: inline-block;
 }
 
-/* ============================================
+/*
    AUTH SWITCH (Login ↔ Signup)
-   ============================================ */
+ */
 .auth-switch {
     text-align: center;
     margin-top: 24px;
@@ -4462,9 +4462,9 @@ body.light-mode .auth-tabs {
     text-decoration: underline;
 }
 
-/* ============================================
+/*
    SWEETALERT2 CUSTOM STYLES
-   ============================================ */
+ */
 .swal2-popup {
     background: rgba(15, 20, 32, 0.95) !important;
     backdrop-filter: blur(20px) !important;
@@ -4513,9 +4513,9 @@ body.light-mode .swal2-cancel {
     border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* ============================================
+/*
    RESPONSIVE
-   ============================================ */
+ */
 @media (max-width: 576px) {
     .auth-card {
         padding: 32px 24px;
@@ -4583,14 +4583,377 @@ body.light-mode .swal2-cancel {
     }
 }
 
-/* ============================================
+/*
    REDUCED MOTION
-   ============================================ */
+ */
 @media (prefers-reduced-motion: reduce) {
     .gradient-orb,
     .auth-card::before,
     .auth-logo-icon,
     .btn-auth::before {
         animation: none !important;
+    }
+}
+
+
+/*
+   ORBIT PROFILE - Page Styles
+ */
+
+.profile-container {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/*
+   PROFILE HEADER
+ */
+.profile-header-card {
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(135deg,
+        rgba(108, 142, 255, 0.15),
+        rgba(255, 184, 107, 0.15));
+    z-index: 0;
+}
+
+.profile-big-avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6C8EFF, #FFB86B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: 700;
+    color: white;
+    z-index: 1;
+    box-shadow: 0 8px 32px rgba(108, 142, 255, 0.4);
+    border: 4px solid var(--bg-secondary);
+    transition: all 0.3s ease;
+}
+
+.profile-big-avatar span {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.profile-big-avatar:hover {
+    transform: scale(1.05);
+}
+
+.profile-header-card h2 {
+    position: relative;
+    z-index: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+
+.profile-header-card > p {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+}
+
+.member-since {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    border: 1px solid var(--border-glass);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.member-since i {
+    color: var(--accent-blue);
+}
+
+/*
+   STATS
+ */
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.profile-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.profile-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+}
+
+.profile-stat-card i {
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.profile-stat-card div {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-stat-card strong {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.1;
+}
+
+.profile-stat-card small {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/*
+   EDIT FORM
+ */
+.profile-edit-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(12px);
+}
+
+.profile-edit-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-glass);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.profile-edit-card h3 i {
+    color: var(--accent-blue);
+}
+
+/* Input wrapper */
+.profile-edit-card .form-group {
+    margin-bottom: 18px;
+}
+
+.profile-edit-card .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.profile-edit-card .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-edit-card .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.profile-edit-card .input-wrapper input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px 0 46px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border-glass);
+    background: var(--bg-soft);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.profile-edit-card .input-wrapper input:focus {
+    border-color: var(--accent-blue);
+    background: rgba(108, 142, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(108, 142, 255, 0.1);
+}
+
+.profile-edit-card .input-wrapper input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.profile-edit-card .lock-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.profile-edit-card .error-msg {
+    display: block;
+    font-size: 11px;
+    color: #EF4444;
+    margin-top: 6px;
+    min-height: 14px;
+    padding-left: 4px;
+    font-weight: 500;
+}
+
+/* Save button */
+.btn-save-profile {
+    width: 100%;
+    padding: 14px 24px;
+    margin-top: 8px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #6C8EFF, #FFB86B);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(108, 142, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-save-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(108, 142, 255, 0.4);
+}
+
+.btn-save-profile:active {
+    transform: translateY(0);
+}
+
+/*
+   DANGER ZONE
+ */
+.profile-danger-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.profile-danger-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #EF4444;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.profile-danger-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+}
+
+.btn-logout {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background: #EF4444;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+/*
+   RESPONSIVE
+ */
+@media (max-width: 576px) {
+    .profile-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-big-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 34px;
+    }
+
+    .profile-header-card h2 {
+        font-size: 20px;
+    }
+
+    .profile-edit-card,
+    .profile-danger-card {
+        padding: 18px;
     }
 }
