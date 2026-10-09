@@ -3405,7 +3405,7 @@ body.light-mode .confirm-overlay {
 }
 
 .form-group input[type="text"] {
-    padding: 12px 14px;
+    padding: 12px 50px;
     border-radius: 10px;
     border: 1px solid var(--border-glass);
     background: var(--bg-soft);
@@ -3804,9 +3804,13 @@ body.light-mode .day-check {
     background: rgba(0,0,0,0.03);
 }
 
-/* ORBIT AUTH - Login & Signup Styles*/
+/* ============================================
+   ORBIT AUTH - Login & Signup Styles
+   ============================================ */
 
-/*  BASE*/
+/* ============================================
+   BASE
+   ============================================ */
 body.auth-page {
     min-height: 100vh;
     display: flex;
@@ -3817,9 +3821,9 @@ body.auth-page {
     position: relative;
 }
 
-/* 
+/* ============================================
    ANIMATED GRADIENT BACKGROUND
-*/
+   ============================================ */
 .auth-bg {
     position: fixed;
     inset: 0;
@@ -3876,9 +3880,9 @@ body.auth-page {
     }
 }
 
-/* 
+/* ============================================
    AUTH WRAPPER
-   */
+   ============================================ */
 .auth-wrapper {
     position: relative;
     z-index: 2;
@@ -3887,9 +3891,9 @@ body.auth-page {
     animation: rise 0.8s ease forwards;
 }
 
-/* 
+/* ============================================
    AUTH CARD (Glassmorphism)
-*/
+   ============================================ */
 .auth-card {
     position: relative;
     padding: 40px 36px;
@@ -3898,13 +3902,12 @@ body.auth-page {
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
+    box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
     overflow: hidden;
 }
 
-/* Animated border glow */
 .auth-card::before {
     content: '';
     position: absolute;
@@ -3912,9 +3915,9 @@ body.auth-page {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, 
-        rgba(108, 142, 255, 0.3) 0%, 
-        rgba(255, 184, 107, 0.3) 50%, 
+    background: linear-gradient(135deg,
+        rgba(108, 142, 255, 0.3) 0%,
+        rgba(255, 184, 107, 0.3) 50%,
         rgba(167, 139, 250, 0.3) 100%);
     border-radius: 26px;
     z-index: -1;
@@ -3932,16 +3935,15 @@ body.auth-page {
     100% { filter: hue-rotate(360deg); }
 }
 
-/* Light mode */
 body.light-mode .auth-card {
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
-/* 
+/* ============================================
    LOGO
-*/
+   ============================================ */
 .auth-logo {
     text-align: center;
     margin-bottom: 32px;
@@ -3958,7 +3960,7 @@ body.light-mode .auth-card {
     justify-content: center;
     font-size: 24px;
     color: white;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(108, 142, 255, 0.4),
         inset 0 2px 0 rgba(255, 255, 255, 0.2);
     animation: pulse-glow 3s ease-in-out infinite;
@@ -3993,9 +3995,9 @@ body.light-mode .auth-card {
     margin: 0;
 }
 
-/* 
+/* ============================================
    TABS
-*/
+   ============================================ */
 .auth-tabs {
     position: relative;
     display: flex;
@@ -4043,7 +4045,6 @@ body.light-mode .auth-tabs {
     color: var(--text-primary);
 }
 
-/* Sliding indicator */
 .tab-indicator {
     position: absolute;
     top: 6px;
@@ -4061,9 +4062,9 @@ body.light-mode .auth-tabs {
     transform: translateX(100%);
 }
 
-/* 
+/* ============================================
    FORMS CONTAINER (Sliding)
-*/
+   ============================================ */
 .auth-forms {
     position: relative;
     overflow: hidden;
@@ -4092,9 +4093,9 @@ body.light-mode .auth-tabs {
     opacity: 0;
 }
 
-/* 
+/* ============================================
    FORM GROUPS
-   */
+   ============================================ */
 .form-group {
     margin-bottom: 18px;
 }
@@ -4109,26 +4110,35 @@ body.light-mode .auth-tabs {
     letter-spacing: 0.08em;
 }
 
-/* Input wrapper */
+/* ============================================
+   INPUT WRAPPER (Fixed padding)
+   ============================================ */
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
+/* Icon on the left - HIGH z-index */
 .input-icon {
     position: absolute;
-    left: 16px;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--text-secondary);
     font-size: 14px;
     pointer-events: none;
     transition: color 0.3s ease;
-    z-index: 1;
+    z-index: 10;
+    line-height: 1;
 }
 
+/* Input with padding on both sides */
 .input-wrapper input {
     width: 100%;
-    padding: 14px 14px 14px 46px;
+    height: 50px;
+    padding: 0 48px 0 48px;   /* ← Right and left padding */
     border-radius: 12px;
     border: 1.5px solid var(--border-glass);
     background: var(--bg-soft);
@@ -4137,6 +4147,9 @@ body.light-mode .auth-tabs {
     font-family: 'Inter', sans-serif;
     outline: none;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    line-height: 1.5;
 }
 
 .input-wrapper input::placeholder {
@@ -4147,12 +4160,11 @@ body.light-mode .auth-tabs {
 .input-wrapper input:focus {
     border-color: #6C8EFF;
     background: rgba(108, 142, 255, 0.05);
-    box-shadow: 
+    box-shadow:
         0 0 0 4px rgba(108, 142, 255, 0.1),
         0 4px 16px rgba(108, 142, 255, 0.15);
 }
 
-.input-wrapper input:focus + .input-icon,
 .input-wrapper:focus-within .input-icon {
     color: #6C8EFF;
 }
@@ -4167,10 +4179,12 @@ body.light-mode .auth-tabs {
     background: rgba(34, 197, 94, 0.05);
 }
 
-/* Password toggle */
+/* Password toggle button */
 .password-toggle {
     position: absolute;
     right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 32px;
     height: 32px;
     border-radius: 8px;
@@ -4182,6 +4196,7 @@ body.light-mode .auth-tabs {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .password-toggle:hover {
@@ -4189,7 +4204,9 @@ body.light-mode .auth-tabs {
     color: var(--text-primary);
 }
 
-/* Error message */
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
 .error-msg {
     display: block;
     font-size: 11px;
@@ -4208,9 +4225,9 @@ body.light-mode .auth-tabs {
     transform: translateY(0);
 }
 
-/* 
+/* ============================================
    PASSWORD STRENGTH
-*/
+   ============================================ */
 .password-strength {
     display: flex;
     gap: 4px;
@@ -4260,9 +4277,9 @@ body.light-mode .auth-tabs {
 .strength-text.strong { color: #22C55E; }
 .strength-text.very-strong { color: #6C8EFF; }
 
-/* 
+/* ============================================
    FORM ROW (Checkbox + Link)
-*/
+   ============================================ */
 .form-row {
     display: flex;
     justify-content: space-between;
@@ -4345,9 +4362,9 @@ body.light-mode .auth-tabs {
     text-decoration: underline;
 }
 
-/* 
+/* ============================================
    AUTH BUTTON
-*/
+   ============================================ */
 .btn-auth {
     position: relative;
     width: 100%;
@@ -4362,7 +4379,7 @@ body.light-mode .auth-tabs {
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 
+    box-shadow:
         0 8px 24px rgba(108, 142, 255, 0.35),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
     margin-top: 8px;
@@ -4375,9 +4392,9 @@ body.light-mode .auth-tabs {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
         transparent);
     transition: left 0.6s ease;
 }
@@ -4388,7 +4405,7 @@ body.light-mode .auth-tabs {
 
 .btn-auth:hover {
     transform: translateY(-2px);
-    box-shadow: 
+    box-shadow:
         0 12px 32px rgba(108, 142, 255, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
@@ -4403,7 +4420,6 @@ body.light-mode .auth-tabs {
     transform: none;
 }
 
-/* Loader */
 .btn-loader {
     display: none;
 }
@@ -4416,9 +4432,9 @@ body.light-mode .auth-tabs {
     display: inline-block;
 }
 
-/* 
+/* ============================================
    AUTH SWITCH (Login ↔ Signup)
-*/
+   ============================================ */
 .auth-switch {
     text-align: center;
     margin-top: 24px;
@@ -4446,9 +4462,9 @@ body.light-mode .auth-tabs {
     text-decoration: underline;
 }
 
-/* 
+/* ============================================
    SWEETALERT2 CUSTOM STYLES
-*/
+   ============================================ */
 .swal2-popup {
     background: rgba(15, 20, 32, 0.95) !important;
     backdrop-filter: blur(20px) !important;
@@ -4497,9 +4513,9 @@ body.light-mode .swal2-cancel {
     border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* 
+/* ============================================
    RESPONSIVE
-*/
+   ============================================ */
 @media (max-width: 576px) {
     .auth-card {
         padding: 32px 24px;
@@ -4530,8 +4546,20 @@ body.light-mode .swal2-cancel {
     }
 
     .input-wrapper input {
-        padding: 13px 13px 13px 44px;
+        height: 46px;
+        padding: 0 42px 0 42px;   /* ← موبایل */
         font-size: 14px;
+    }
+
+    .input-icon {
+        left: 14px;
+        font-size: 13px;
+    }
+
+    .password-toggle {
+        right: 10px;
+        width: 28px;
+        height: 28px;
     }
 
     .btn-auth {
@@ -4555,9 +4583,9 @@ body.light-mode .swal2-cancel {
     }
 }
 
-/* 
+/* ============================================
    REDUCED MOTION
-*/
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
     .gradient-orb,
     .auth-card::before,
