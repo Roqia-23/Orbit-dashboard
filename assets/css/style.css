@@ -4934,9 +4934,7 @@ body.light-mode .swal2-cancel {
     box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
 }
 
-/*
-   RESPONSIVE
- */
+/*RESPONSIVE*/
 @media (max-width: 576px) {
     .profile-stats-grid {
         grid-template-columns: 1fr;
