@@ -1,74 +1,63 @@
 /* ============================================
    ORBIT AUTH - Login & Signup Logic
+   WITH SHA-256 Password Hashing (No library)
    ============================================ */
 
+// HASH FUNCTIONS (SHA-256 via Web Crypto API)
+async function hashPassword(password) {
+  // SHA-256 hash با Salt ثابت
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password + "ORBIT_SALT_2026");
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function verifyPassword(password, hashedPassword) {
+  const newHash = await hashPassword(password);
+  return newHash === hashedPassword;
+}
 
 // DOM ELEMENTS
-
 const tabLogin = document.getElementById("tabLogin");
 const tabSignup = document.getElementById("tabSignup");
 const tabIndicator = document.getElementById("tabIndicator");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
 
-
 // TAB SWITCHING
-
 function switchTab(tab) {
-  console.log("🔄 Switching to tab:", tab);
+  console.log("🔄 Tab:", tab);
 
   if (tab === "signup") {
-    // Tabs
     tabLogin.classList.remove("active");
     tabSignup.classList.add("active");
     tabIndicator.classList.add("right");
-
-    // Forms
     loginForm.classList.remove("active");
     signupForm.classList.add("active");
-
-    // Focus
-    setTimeout(() => {
-      const nameInput = document.getElementById("signupName");
-      if (nameInput) nameInput.focus();
-    }, 400);
+    setTimeout(() => document.getElementById("signupName")?.focus(), 400);
   } else {
-    // Tabs
     tabSignup.classList.remove("active");
     tabLogin.classList.add("active");
     tabIndicator.classList.remove("right");
-
-    // Forms
     signupForm.classList.remove("active");
     loginForm.classList.add("active");
-
-    // Focus
-    setTimeout(() => {
-      const emailInput = document.getElementById("loginEmail");
-      if (emailInput) emailInput.focus();
-    }, 400);
+    setTimeout(() => document.getElementById("loginEmail")?.focus(), 400);
   }
 
-  // Clear errors
   clearAllErrors();
 }
 
-// Tab click events
-if (tabLogin) {
-  tabLogin.addEventListener("click", (e) => {
-    e.preventDefault();
-    switchTab("login");
-  });
-}
+tabLogin?.addEventListener("click", (e) => {
+  e.preventDefault();
+  switchTab("login");
+});
 
-if (tabSignup) {
-  tabSignup.addEventListener("click", (e) => {
-    e.preventDefault();
-    switchTab("signup");
-  });
-}
+tabSignup?.addEventListener("click", (e) => {
+  e.preventDefault();
+  switchTab("signup");
+});
 
-// Switch links (bottom of forms)
 document.querySelectorAll("[data-switch]").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
@@ -76,13 +65,10 @@ document.querySelectorAll("[data-switch]").forEach((link) => {
   });
 });
 
-
 // PASSWORD TOGGLE (Show/Hide)
-
 document.querySelectorAll(".password-toggle").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-
     const targetId = btn.dataset.target;
     const input = document.getElementById(targetId);
     const icon = btn.querySelector("i");
@@ -97,9 +83,7 @@ document.querySelectorAll(".password-toggle").forEach((btn) => {
   });
 });
 
-
 // PASSWORD STRENGTH
-
 const signupPasswordInput = document.getElementById("signupPassword");
 const passwordStrengthEl = document.getElementById("passwordStrength");
 const strengthTextEl = document.getElementById("strengthText");
@@ -108,7 +92,6 @@ if (signupPasswordInput) {
   signupPasswordInput.addEventListener("input", () => {
     const password = signupPasswordInput.value;
 
-    // Reset
     passwordStrengthEl.classList.remove(
       "weak",
       "medium",
@@ -154,9 +137,7 @@ function calculateStrength(password) {
   return Math.min(score, 4);
 }
 
-
 // ERROR HELPERS
-
 function showError(inputId, errorId, message) {
   const input = document.getElementById(inputId);
   const error = document.getElementById(errorId);
@@ -178,16 +159,6 @@ function showSuccess(inputId, errorId) {
   error.classList.remove("show");
 }
 
-function clearError(inputId, errorId) {
-  const input = document.getElementById(inputId);
-  const error = document.getElementById(errorId);
-  if (!input || !error) return;
-
-  input.classList.remove("error", "success");
-  error.textContent = "";
-  error.classList.remove("show");
-}
-
 function clearAllErrors() {
   document.querySelectorAll(".input-wrapper input").forEach((input) => {
     input.classList.remove("error", "success");
@@ -198,9 +169,7 @@ function clearAllErrors() {
   });
 }
 
-
 // VALIDATION
-
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -213,9 +182,7 @@ function isValidPassword(password) {
   return password.length >= 6;
 }
 
-
-// SIGNUP HANDLER
-
+// SIGNUP HANDLER (WITH SHA-256 HASHING)
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -228,7 +195,7 @@ signupForm.addEventListener("submit", (e) => {
   clearAllErrors();
   let hasError = false;
 
-  // Name
+  // Name validation
   if (!name) {
     showError("signupName", "signupNameError", "Name is required");
     hasError = true;
@@ -241,7 +208,7 @@ signupForm.addEventListener("submit", (e) => {
     hasError = true;
   }
 
-  // Email
+  // Email validation
   if (!email) {
     showError("signupEmail", "signupEmailError", "Email is required");
     hasError = true;
@@ -260,7 +227,7 @@ signupForm.addEventListener("submit", (e) => {
     }
   }
 
-  // Password
+  // Password validation
   if (!password) {
     showError("signupPassword", "signupPasswordError", "Password is required");
     hasError = true;
@@ -273,7 +240,7 @@ signupForm.addEventListener("submit", (e) => {
     hasError = true;
   }
 
-  // Confirm
+  // Confirm validation
   if (!confirm) {
     showError(
       "signupConfirm",
@@ -286,7 +253,7 @@ signupForm.addEventListener("submit", (e) => {
     hasError = true;
   }
 
-  // Terms
+  // Terms validation
   if (!agreeTerms) {
     const err = document.getElementById("agreeTermsError");
     err.textContent = "You must agree to the terms";
@@ -298,14 +265,6 @@ signupForm.addEventListener("submit", (e) => {
     const card = document.getElementById("authCard");
     card.classList.add("shake");
     setTimeout(() => card.classList.remove("shake"), 500);
-
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Please fix the errors above",
-      timer: 2000,
-      showConfirmButton: false,
-    });
     return;
   }
 
@@ -314,50 +273,74 @@ signupForm.addEventListener("submit", (e) => {
   btn.classList.add("loading");
   btn.disabled = true;
 
-  setTimeout(() => {
-    // Get existing users
-    const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
+  Swal.fire({
+    title: "Creating your account...",
+    html: "🔐 Encrypting your password",
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading(),
+  });
 
-    // New user
-    const newUser = {
-      id: users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1,
-      name: name,
-      email: email,
-      password: password,
-      createdAt: Date.now(),
-    };
+  // ⭐ async + await
+  setTimeout(async () => {
+    try {
+      // ⭐ Hash the password
+      const hashedPassword = await hashPassword(password);
+      console.log(
+        "🔐 Password hashed:",
+        hashedPassword.substring(0, 30) + "...",
+      );
 
-    users.push(newUser);
-    localStorage.setItem("orbit-users", JSON.stringify(users));
+      // Get existing users
+      const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
 
-    // Save current user in SESSION
-    sessionStorage.setItem(
-      "orbit-current-user",
-      JSON.stringify({
-        id: newUser.id,
-        name: newUser.name,
-        email: newUser.email,
-      }),
-    );
+      // New user
+      const newUser = {
+        id: users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1,
+        name: name,
+        email: email,
+        password: hashedPassword, // ⭐ Hashed
+        createdAt: Date.now(),
+      };
 
-    btn.classList.remove("loading");
-    btn.disabled = false;
+      users.push(newUser);
+      localStorage.setItem("orbit-users", JSON.stringify(users));
 
-    Swal.fire({
-      icon: "success",
-      title: `Welcome, ${name}! 🚀`,
-      text: "Your account has been created",
-      timer: 1500,
-      showConfirmButton: false,
-    }).then(() => {
-      window.location.href = "dashboard.html";
-    });
+      // Session
+      sessionStorage.setItem(
+        "orbit-current-user",
+        JSON.stringify({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+        }),
+      );
+
+      btn.classList.remove("loading");
+      btn.disabled = false;
+
+      Swal.fire({
+        icon: "success",
+        title: `Welcome, ${name}! 🚀`,
+        html: "Account created!<br><small>🔒 Password encrypted with SHA-256</small>",
+        timer: 1800,
+        showConfirmButton: false,
+      }).then(() => {
+        window.location.href = "dashboard.html";
+      });
+    } catch (err) {
+      console.error("❌ Signup error:", err);
+      btn.classList.remove("loading");
+      btn.disabled = false;
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Something went wrong. Please try again.",
+      });
+    }
   }, 800);
 });
 
-
-// LOGIN HANDLER
-
+// LOGIN HANDLER (WITH SHA-256 VERIFICATION)
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -368,7 +351,7 @@ loginForm.addEventListener("submit", (e) => {
   clearAllErrors();
   let hasError = false;
 
-  // Email
+  // Email validation
   if (!email) {
     showError("loginEmail", "loginEmailError", "Email is required");
     hasError = true;
@@ -377,7 +360,7 @@ loginForm.addEventListener("submit", (e) => {
     hasError = true;
   }
 
-  // Password
+  // Password validation
   if (!password) {
     showError("loginPassword", "loginPasswordError", "Password is required");
     hasError = true;
@@ -402,57 +385,79 @@ loginForm.addEventListener("submit", (e) => {
   btn.classList.add("loading");
   btn.disabled = true;
 
-  setTimeout(() => {
-    const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
-    const user = users.find(
-      (u) => u.email === email && u.password === password,
-    );
+  Swal.fire({
+    title: "Verifying...",
+    html: "🔍 Checking your credentials",
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading(),
+  });
 
-    if (!user) {
+  // ⭐ async + await
+  setTimeout(async () => {
+    try {
+      const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
+      const user = users.find((u) => u.email === email);
+
+      let isValid = false;
+      if (user) {
+        isValid = await verifyPassword(password, user.password);
+        console.log("🔍 Verification:", isValid ? "✅ Success" : "❌ Failed");
+      }
+
+      if (!user || !isValid) {
+        btn.classList.remove("loading");
+        btn.disabled = false;
+
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Invalid email or password",
+          confirmButtonText: "Try Again",
+        });
+        return;
+      }
+
+      const userData = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      };
+
+      // Session
+      sessionStorage.setItem("orbit-current-user", JSON.stringify(userData));
+
+      // Remember me
+      if (rememberMe) {
+        localStorage.setItem("orbit-remember-user", JSON.stringify(userData));
+        console.log("💾 Remembered user saved");
+      }
+
       btn.classList.remove("loading");
       btn.disabled = false;
 
       Swal.fire({
-        icon: "error",
-        title: "Login Failed",
-        text: "Invalid email or password",
-        confirmButtonText: "Try Again",
+        icon: "success",
+        title: `Welcome back, ${user.name}! 👋`,
+        html: "Redirecting to your dashboard...",
+        timer: 1500,
+        showConfirmButton: false,
+      }).then(() => {
+        window.location.href = "dashboard.html";
       });
-      return;
+    } catch (err) {
+      console.error("❌ Login error:", err);
+      btn.classList.remove("loading");
+      btn.disabled = false;
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Something went wrong. Please try again.",
+      });
     }
-
-    const userData = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    };
-
-    // Save in session
-    sessionStorage.setItem("orbit-current-user", JSON.stringify(userData));
-
-    // Remember me
-    if (rememberMe) {
-      localStorage.setItem("orbit-remember-user", JSON.stringify(userData));
-    }
-
-    btn.classList.remove("loading");
-    btn.disabled = false;
-
-    Swal.fire({
-      icon: "success",
-      title: `Welcome back, ${user.name}! 👋`,
-      text: "Redirecting to your dashboard...",
-      timer: 1500,
-      showConfirmButton: false,
-    }).then(() => {
-      window.location.href = "dashboard.html";
-    });
   }, 800);
 });
 
-
 // FORGOT PASSWORD
-
 const forgotLink = document.getElementById("forgotPasswordLink");
 if (forgotLink) {
   forgotLink.addEventListener("click", (e) => {
@@ -460,15 +465,13 @@ if (forgotLink) {
     Swal.fire({
       icon: "info",
       title: "Forgot Password?",
-      text: "This feature will be available soon!",
-      confirmButtonText: "OK",
+      html: "Because passwords are <strong>hashed</strong> and cannot be recovered,<br>please create a new account with a different email.",
+      confirmButtonText: "Got it",
     });
   });
 }
 
-
-// SHAKE ANIMATION (injected)
-
+// SHAKE ANIMATION
 const shakeStyle = document.createElement("style");
 shakeStyle.textContent = `
     @keyframes shake {
@@ -476,32 +479,45 @@ shakeStyle.textContent = `
         25% { transform: translateX(-8px); }
         75% { transform: translateX(8px); }
     }
-    .shake {
-        animation: shake 0.4s ease;
-    }
+    .shake { animation: shake 0.4s ease; }
 `;
 document.head.appendChild(shakeStyle);
 
+// AUTO-FILL + INIT
+function initAuth() {
+  console.log("🌌 Auth page loading...");
 
-// AUTO-FILL FROM REMEMBER ME
-
-document.addEventListener("DOMContentLoaded", () => {
+  // Auto-fill remembered user
   const remembered = localStorage.getItem("orbit-remember-user");
   if (remembered) {
-    const user = JSON.parse(remembered);
-    const emailInput = document.getElementById("loginEmail");
-    const rememberCheckbox = document.getElementById("rememberMe");
+    try {
+      const user = JSON.parse(remembered);
+      const emailInput = document.getElementById("loginEmail");
+      const rememberCheckbox = document.getElementById("rememberMe");
 
-    if (emailInput) emailInput.value = user.email;
-    if (rememberCheckbox) rememberCheckbox.checked = true;
+      if (emailInput && user.email) {
+        emailInput.value = user.email;
+        console.log("📧 Auto-filled email:", user.email);
+      }
+      if (rememberCheckbox) {
+        rememberCheckbox.checked = true;
+      }
+    } catch (err) {
+      console.error("Auto-fill error:", err);
+    }
   }
 
+  // Focus email input
   setTimeout(() => {
     const emailInput = document.getElementById("loginEmail");
-    if (emailInput) emailInput.focus();
+    if (emailInput && !emailInput.value) {
+      emailInput.focus();
+    }
   }, 300);
 
-  console.log("🔐 Auth page loaded");
-});
+  console.log("✅ Auth ready");
+}
 
-console.log("🌌 ORBIT — Auth page ready");
+document.addEventListener("DOMContentLoaded", initAuth);
+
+console.log("🌌 ORBIT — Auth page ready with SHA-256");
