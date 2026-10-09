@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORBIT — Profile</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+</head>
+
+<body>
+    <div id="stars"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar glass-nav" id="mainNavbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <label for="sidebarCheckbox" class="mobile-toggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <a class="navbar-brand" href="index.html" id="brandLogo">
+                    <div class="brand-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <span>ORBIT</span>
+                </a>
+            </div>
+
+            <div class="navbar-right">
+                <button class="nav-icon-btn" id="notificationsBtn" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="nav-icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <input type="checkbox" id="sidebarCheckbox" class="sidebar-checkbox" hidden />
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-profile" id="userProfile">
+            <div class="profile-avatar" id="profileAvatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <strong id="userName">Guest User</strong>
+                <small id="userStatus">Welcome to ORBIT</small>
+            </div>
+        </div>
+
+        <ul class="sidebar-menu" id="sidebarMenu">
+            <li class="menu-label">MAIN</li>
+            <li>
+                <a href="dashboard.html" id="navDashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="tasks.html" id="navTasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                    <span class="menu-count" id="tasksCount">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="notes.html" id="navNotes">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notes</span>
+                    <span class="menu-count" id="notesCount">0</span>
+                </a>
+            </li>
+            <li>
+                <a href="habits.html" id="navHabits">
+                    <i class="fas fa-heart"></i>
+                    <span>Habits</span>
+                    <span class="menu-count" id="habitsCount">0</span>
+                </a>
+            </li>
+
+            <li class="divider"></li>
+            <li class="menu-label">ACCOUNT</li>
+
+            <li>
+                <a href="profile.html" class="active" id="navProfile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="navSettings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="navHelp">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <label for="sidebarCheckbox" class="sidebar-overlay" id="sidebarOverlay"></label>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="mainContent">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h1>Profile</h1>
+                <p>Manage your account and view your stats</p>
+            </div>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="profile-container">
+
+            <!-- Avatar Section -->
+            <div class="profile-header-card">
+                <div class="profile-big-avatar" id="bigAvatar">
+                    <span>A</span>
+                </div>
+                <h2 id="profileDisplayName">Ali Ahmad</h2>
+                <p id="profileDisplayEmail">ali@test.com</p>
+                <span class="member-since">
+                    <i class="fas fa-calendar"></i>
+                    Member since <span id="memberSince">Oct 7, 2026</span>
+                </span>
+            </div>
+
+            <!-- Stats -->
+            <div class="profile-stats-grid">
+                <div class="profile-stat-card">
+                    <i class="fas fa-tasks" style="color: #6C8EFF;"></i>
+                    <div>
+                        <strong id="statTasks">0</strong>
+                        <small>Tasks</small>
+                    </div>
+                </div>
+                <div class="profile-stat-card">
+                    <i class="fas fa-sticky-note" style="color: #FFB86B;"></i>
+                    <div>
+                        <strong id="statNotes">0</strong>
+                        <small>Notes</small>
+                    </div>
+                </div>
+                <div class="profile-stat-card">
+                    <i class="fas fa-heart" style="color: #EF4444;"></i>
+                    <div>
+                        <strong id="statHabits">0</strong>
+                        <small>Habits</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Form -->
+            <div class="profile-edit-card">
+                <h3>
+                    <i class="fas fa-edit"></i>
+                    Edit Profile
+                </h3>
+
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="editName">Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="editName" maxlength="50" autocomplete="name" />
+                        </div>
+                        <small class="error-msg" id="editNameError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editEmail">Email (cannot be changed)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="editEmail" disabled />
+                            <i class="fas fa-lock lock-icon"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save-profile" id="saveProfileBtn">
+                        <i class="fas fa-check"></i>
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="profile-danger-card">
+                <h3>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Danger Zone
+                </h3>
+                <p>Once you logout, you'll need to sign in again.</p>
+                <button class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/guard.js"></script>
+    <script src="assets/js/profile-avatar.js"></script>
+    <script src="assets/js/profile.js"></script>
+</body>
+
+</html>
