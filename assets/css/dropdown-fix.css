@@ -1,10 +1,10 @@
-/* ============================================
+/*
    ORBIT - Custom Dropdown / Select Styles
-   ============================================ */
+*/
 
-/* ============================================
+/*
    SELECT - BASE STYLE
-   ============================================ */
+*/
 select,
 .sort-dropdown select {
     appearance: none;
@@ -45,13 +45,13 @@ select:focus,
     box-shadow: 0 0 0 3px rgba(108, 142, 255, 0.15);
 }
 
-/* ============================================
+/*
    SELECT OPTIONS (Dropdown items) - MOST IMPORTANT!
-   ============================================ */
+*/
 select option {
     /* Dark mode options */
-    background-color: #0F1420;  /* ← پیش‌فرض تیره */
-    color: #EDEFF7;              /* ← متن روشن */
+    background-color: #0F1420;  
+    color: #EDEFF7;              
     padding: 12px 16px;
     font-size: 13px;
     font-family: 'Inter', sans-serif;
@@ -61,13 +61,13 @@ select option {
 select option:hover,
 select option:focus,
 select option:checked {
-    background-color: #6C8EFF !important;  /* ← آبی ORBIT */
+    background-color: #6C8EFF !important; 
     color: white !important;
 }
 
-/* ============================================
+/*
    LIGHT MODE - Options
-   ============================================ */
+*/
 body.light-mode select option {
     background-color: #FFFFFF;
     color: #1A1D2E;
@@ -80,9 +80,9 @@ body.light-mode select option:checked {
     color: white !important;
 }
 
-/* ============================================
+/*
    SELECT IN MODAL (Note Category)
-   ============================================ */
+*/
 .form-group select {
     appearance: none;
     -webkit-appearance: none;
@@ -136,9 +136,9 @@ body.light-mode .form-group select option {
     color: #1A1D2E;
 }
 
-/* ============================================
+/*
    FALLBACK FOR BROWSERS THAT DON'T SUPPORT OPTION STYLING
-   ============================================ */
+*/
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     select,
     .sort-dropdown select,
@@ -149,9 +149,8 @@ body.light-mode .form-group select option {
     }
 }
 
-/* ============================================
-   SORT DROPDOWN WRAPPER
-   ============================================ */
+/*SORT DROPDOWN WRAPPER
+*/
 .sort-dropdown {
     position: relative;
     display: flex;
