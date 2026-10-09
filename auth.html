@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORBIT — Login / Sign Up</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/auth.css" />
+</head>
+
+<body class="auth-page">
+    <!-- Starfield -->
+    <div id="stars"></div>
+
+    <!-- Animated Gradient Background -->
+    <div class="auth-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Auth Container -->
+    <div class="auth-wrapper">
+        <div class="auth-card" id="authCard">
+
+            <!-- Logo -->
+            <div class="auth-logo">
+                <div class="auth-logo-icon">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <h1>ORBIT</h1>
+                <p>Your productivity, orbited</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs" id="authTabs">
+                <button class="auth-tab active" id="tabLogin" data-tab="login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </button>
+                <button class="auth-tab" id="tabSignup" data-tab="signup">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up</span>
+                </button>
+                <div class="tab-indicator" id="tabIndicator"></div>
+            </div>
+
+            <!-- Forms Container -->
+            <div class="auth-forms" id="authForms">
+
+                <!-- ============================================
+                     LOGIN FORM
+                     ============================================ -->
+                <form class="auth-form active" id="loginForm" autocomplete="on">
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+                        </div>
+                        <small class="error-msg" id="loginEmailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="loginPassword" placeholder="Enter your password"
+                                autocomplete="current-password" />
+                            <button type="button" class="password-toggle" data-target="loginPassword"
+                                aria-label="Show password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small class="error-msg" id="loginPasswordError"></small>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe" />
+                            <span class="checkbox-custom"></span>
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-auth btn-login" id="loginBtn">
+                        <span class="btn-text">Login</span>
+                        <span class="btn-loader"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+
+                    <div class="auth-switch">
+                        <span>Don't have an account?</span>
+                        <button type="button" class="switch-link" data-switch="signup">Sign up</button>
+                    </div>
+                </form>
+
+                <!-- ============================================
+                     SIGNUP FORM
+                     ============================================ -->
+                <form class="auth-form" id="signupForm" autocomplete="on">
+
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="signupName" placeholder="e.g. Ali Ahmad" autocomplete="name"
+                                maxlength="50" />
+                        </div>
+                        <small class="error-msg" id="signupNameError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" />
+                        </div>
+                        <small class="error-msg" id="signupEmailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="signupPassword" placeholder="At least 6 characters"
+                                autocomplete="new-password" />
+                            <button type="button" class="password-toggle" data-target="signupPassword"
+                                aria-label="Show password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                        </div>
+                        <small class="strength-text" id="strengthText"></small>
+                        <small class="error-msg" id="signupPasswordError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupConfirm">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="signupConfirm" placeholder="Re-enter password"
+                                autocomplete="new-password" />
+                            <button type="button" class="password-toggle" data-target="signupConfirm"
+                                aria-label="Show password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small class="error-msg" id="signupConfirmError"></small>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" />
+                            <span class="checkbox-custom"></span>
+                            <span>I agree to the <a href="#" class="terms-link">Terms & Privacy</a></span>
+                        </label>
+                    </div>
+                    <small class="error-msg" id="agreeTermsError"></small>
+
+                    <button type="submit" class="btn-auth btn-signup" id="signupBtn">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-loader"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+
+                    <div class="auth-switch">
+                        <span>Already have an account?</span>
+                        <button type="button" class="switch-link" data-switch="login">Login</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+
+</html>
