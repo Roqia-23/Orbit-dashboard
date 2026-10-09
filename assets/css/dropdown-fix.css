@@ -1,0 +1,172 @@
+/* ============================================
+   ORBIT - Custom Dropdown / Select Styles
+   ============================================ */
+
+/* ============================================
+   SELECT - BASE STYLE
+   ============================================ */
+select,
+.sort-dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    
+    padding: 10px 38px 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-glass);
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    
+    /* Custom arrow icon */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B92AC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+
+select:hover,
+.sort-dropdown select:hover {
+    border-color: var(--accent-blue);
+    background-color: var(--bg-soft);
+}
+
+select:focus,
+.sort-dropdown select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(108, 142, 255, 0.15);
+}
+
+/* ============================================
+   SELECT OPTIONS (Dropdown items) - MOST IMPORTANT!
+   ============================================ */
+select option {
+    /* Dark mode options */
+    background-color: #0F1420;  /* ← پیش‌فرض تیره */
+    color: #EDEFF7;              /* ← متن روشن */
+    padding: 12px 16px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hover / Selected option */
+select option:hover,
+select option:focus,
+select option:checked {
+    background-color: #6C8EFF !important;  /* ← آبی ORBIT */
+    color: white !important;
+}
+
+/* ============================================
+   LIGHT MODE - Options
+   ============================================ */
+body.light-mode select option {
+    background-color: #FFFFFF;
+    color: #1A1D2E;
+}
+
+body.light-mode select option:hover,
+body.light-mode select option:focus,
+body.light-mode select option:checked {
+    background-color: #6C8EFF !important;
+    color: white !important;
+}
+
+/* ============================================
+   SELECT IN MODAL (Note Category)
+   ============================================ */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    width: 100%;
+    padding: 12px 38px 12px 16px;
+    
+    background-color: var(--bg-soft);
+    color: var(--text-primary);
+    
+    border-radius: 10px;
+    border: 1px solid var(--border-glass);
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    
+    /* Custom arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B92AC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+}
+
+.form-group select:focus {
+    border-color: var(--accent-blue);
+    background-color: rgba(108, 142, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(108, 142, 255, 0.15);
+}
+
+/* Options in modal */
+.form-group select option {
+    background-color: #0F1420;
+    color: #EDEFF7;
+    padding: 12px;
+}
+
+.form-group select option:checked,
+.form-group select option:hover {
+    background-color: #6C8EFF !important;
+    color: white !important;
+}
+
+body.light-mode .form-group select option {
+    background-color: #FFFFFF;
+    color: #1A1D2E;
+}
+
+/* ============================================
+   FALLBACK FOR BROWSERS THAT DON'T SUPPORT OPTION STYLING
+   ============================================ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select,
+    .sort-dropdown select,
+    .form-group select {
+        /* Safari / Chrome */
+        background-color: var(--bg-card);
+        color: var(--text-primary);
+    }
+}
+
+/* ============================================
+   SORT DROPDOWN WRAPPER
+   ============================================ */
+.sort-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sort-dropdown > i {
+    position: absolute;
+    left: 14px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sort-dropdown select {
+    padding-left: 38px;
+}
