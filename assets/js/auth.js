@@ -1,7 +1,6 @@
-/* ============================================
-   ORBIT AUTH - Login & Signup Logic
-   WITH SHA-256 Password Hashing (No library)
-   ============================================ */
+
+  // ORBIT AUTH - Login & Signup Logic
+  //WITH SHA-256 Password Hashing 
 
 // HASH FUNCTIONS (SHA-256 via Web Crypto API)
 async function hashPassword(password) {
@@ -280,52 +279,69 @@ signupForm.addEventListener("submit", (e) => {
     didOpen: () => Swal.showLoading(),
   });
 
-  // ⭐ async + await
+  //  async + await
   setTimeout(async () => {
     try {
-      // ⭐ Hash the password
+      // 1. Hash the password
       const hashedPassword = await hashPassword(password);
       console.log(
         "🔐 Password hashed:",
         hashedPassword.substring(0, 30) + "...",
       );
 
-      // Get existing users
+      // 2. Get existing users
       const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
 
-      // New user
+      // 3. Create new user
       const newUser = {
         id: users.length > 0 ? Math.max(...users.map((u) => u.id)) + 1 : 1,
         name: name,
         email: email,
-        password: hashedPassword, // ⭐ Hashed
+        password: hashedPassword,
         createdAt: Date.now(),
       };
 
+      // 4. Save user
       users.push(newUser);
       localStorage.setItem("orbit-users", JSON.stringify(users));
 
-      // Session
-      sessionStorage.setItem(
-        "orbit-current-user",
-        JSON.stringify({
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-        }),
-      );
-
+      // 5. Reset button state
       btn.classList.remove("loading");
       btn.disabled = false;
 
+      // 6. Show success message
       Swal.fire({
         icon: "success",
-        title: `Welcome, ${name}! 🚀`,
-        html: "Account created!<br><small>🔒 Password encrypted with SHA-256</small>",
-        timer: 1800,
-        showConfirmButton: false,
+        title: "Account Created! 🎉",
+        html: `
+                <p>Welcome to ORBIT, <strong>${name}</strong>!</p>
+                <p style="font-size: 13px; color: #8B92AC; margin-top: 8px;">
+                    🔒 Your password is encrypted<br>
+                    Now please login to continue
+                </p>
+            `,
+        confirmButtonText: "Go to Login",
+        confirmButtonColor: "#6C8EFF",
+        allowOutsideClick: false,
       }).then(() => {
-        window.location.href = "dashboard.html";
+        // 7. ✅ برو به Login (نه Dashboard)
+        // 8. فرم رو خالی کن
+        signupForm.reset();
+
+        // 9. Auto-fill email توی فرم Login
+        const loginEmailInput = document.getElementById("loginEmail");
+        if (loginEmailInput) {
+          loginEmailInput.value = email;
+        }
+
+        // 10. Switch to Login tab
+        switchTab("login");
+
+        // 11. Focus on password field
+        setTimeout(() => {
+          const loginPasswordInput = document.getElementById("loginPassword");
+          if (loginPasswordInput) loginPasswordInput.focus();
+        }, 400);
       });
     } catch (err) {
       console.error("❌ Signup error:", err);

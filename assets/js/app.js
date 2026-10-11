@@ -68,12 +68,12 @@ function closeOrbitModal() {
   }
 }
 
-// close with escape
+// 3. close with escape
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeOrbitModal();
 });
 
-// 3. CLEAR ALL DATA
+//  CLEAR ALL DATA
 function clearAllData() {
   if (
     confirm("⚠️ Are you sure? This will delete ALL tasks, notes, and habits.")
@@ -133,7 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 5. SIDEBAR MODALS (Settings/Help/Stats/Profile/Notifications)
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------- SETTINGS ----------
+
+  // SETTINGS 
   const settingsBtn = document.getElementById("navSettings");
   if (settingsBtn) {
     settingsBtn.addEventListener("click", (e) => {
@@ -511,7 +512,7 @@ function updateSidebarCounts() {
 
 // 8. START DASHBOARD
 document.addEventListener("DOMContentLoaded", () => {
-  // فقط اگه توی داشبورد هستیم
+
   const isDashboard =
     document.getElementById("statsSection") ||
     document.getElementById("recentTasksList");
@@ -530,6 +531,4 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Dashboard loaded!");
 });
 
-// CONSOLE WELCOME
-console.log("🌌 ORBIT — Welcome to the productivity orbit!");
-console.log("🚀 Built with ❤️ and JavaScript");
+
