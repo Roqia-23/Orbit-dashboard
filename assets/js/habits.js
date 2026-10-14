@@ -1,9 +1,7 @@
-/* ============================================
-   ORBIT HABITS - Habit Tracking Logic
-   ============================================ */
 
+//ORBIT HABITS 
+    
 // GLOBAL VARIABLES
-let habits = [];
 let currentFilter = "all";
 let editingHabitId = null;
 let deletingHabitId = null;
@@ -16,14 +14,22 @@ const DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // 1. LOAD HABITS FROM LOCALSTORAGE
 function loadHabits() {
-  habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
-  console.log("📦 Habits loaded:", habits.length);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const key = `orbit-habits-${user.id}`;
+  habits = JSON.parse(localStorage.getItem(key) || "[]");
+  console.log(`📦 Habits loaded for ${user.name}:`, habits.length);
 }
 
 // 2. SAVE HABITS TO LOCALSTORAGE
 function saveHabits() {
-  localStorage.setItem("orbit-habits", JSON.stringify(habits));
-  console.log("💾 Habits saved:", habits.length);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const key = `orbit-habits-${user.id}`;
+  localStorage.setItem(key, JSON.stringify(habits));
+  console.log(`💾 Habits saved for ${user.name}:`, habits.length);
 }
 
 // 3. GENERATE UNIQUE ID

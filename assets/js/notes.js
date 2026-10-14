@@ -1,7 +1,6 @@
 
 
 
-let notes = [];
 let currentFilter = "all";
 let currentSort = "newest";
 let editingNoteId = null;
@@ -10,14 +9,22 @@ let viewingNoteId = null;
 
 // 1. LOAD NOTES FROM LOCALSTORAGE
 function loadNotes() {
-  notes = JSON.parse(localStorage.getItem("orbit-notes") || "[]");
-  console.log("📦 Notes loaded:", notes.length);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const key = `orbit-notes-${user.id}`;
+  notes = JSON.parse(localStorage.getItem(key) || "[]");
+  console.log(`📦 Notes loaded for ${user.name}:`, notes.length);
 }
 
 // 2. SAVE NOTES TO LOCALSTORAGE
 function saveNotes() {
-  localStorage.setItem("orbit-notes", JSON.stringify(notes));
-  console.log("💾 Notes saved:", notes.length);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const key = `orbit-notes-${user.id}`;
+  localStorage.setItem(key, JSON.stringify(notes));
+  console.log(`💾 Notes saved for ${user.name}:`, notes.length);
 }
 
 // 3. GENERATE UNIQUE ID

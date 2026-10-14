@@ -1,10 +1,10 @@
 
-  // ORBIT AUTH - Login & Signup Logic
+  // ORBIT AUTH 
   //WITH SHA-256 Password Hashing 
 
 // HASH FUNCTIONS (SHA-256 via Web Crypto API)
 async function hashPassword(password) {
-  // SHA-256 hash با Salt ثابت
+  
   const encoder = new TextEncoder();
   const data = encoder.encode(password + "ORBIT_SALT_2026");
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
@@ -324,11 +324,10 @@ signupForm.addEventListener("submit", (e) => {
         confirmButtonColor: "#6C8EFF",
         allowOutsideClick: false,
       }).then(() => {
-        // 7. ✅ برو به Login (نه Dashboard)
-        // 8. فرم رو خالی کن
+        
         signupForm.reset();
 
-        // 9. Auto-fill email توی فرم Login
+        // 9. Auto-fill email 
         const loginEmailInput = document.getElementById("loginEmail");
         if (loginEmailInput) {
           loginEmailInput.value = email;

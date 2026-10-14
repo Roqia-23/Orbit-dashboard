@@ -1,21 +1,29 @@
 
 // GLOBAL VARIABLES
-let tasks=[];
 let currentFilter = "all";
 let currentSort = "newest";
 let editingTaskId = null;
 let deletingTaskId = null;
 
 // 1. LOAD TASKS FROM LOCALSTORAGE
-function loadTasks() {
-  tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-  console.log("📦 Tasks loaded:", tasks.length);
-}
+  function loadTasks() {
+    const user = getCurrentUser();
+    if (!user) return;
+
+    const key = `orbit-tasks-${user.id}`;
+    tasks = JSON.parse(localStorage.getItem(key) || "[]");
+    console.log(`📦 Tasks loaded for ${user.name}:`, tasks.length);
+  }
+
 
 // 2. SAVE TASKS TO LOCALSTORAGE
 function saveTasks() {
-  localStorage.setItem("orbit-tasks", JSON.stringify(tasks));
-  console.log("💾 Tasks saved:", tasks.length);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const key = `orbit-tasks-${user.id}`;
+  localStorage.setItem(key, JSON.stringify(tasks));
+  console.log(`💾 Tasks saved for ${user.name}:`, tasks.length);
 }
 
 // 3. GENERATE UNIQUE ID

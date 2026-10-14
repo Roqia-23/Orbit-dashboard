@@ -1,4 +1,3 @@
-
 // 1. STARFIELD
 (function createStars() {
   const container = document.getElementById("stars");
@@ -28,7 +27,6 @@
 
 // 2. ORBIT MODAL SYSTEM (unique names)
 function showOrbitModal(title, content) {
-
   const existing = document.getElementById("orbitModal");
   if (existing) existing.remove();
 
@@ -50,7 +48,6 @@ function showOrbitModal(title, content) {
     `;
 
   document.body.appendChild(modal);
-
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeOrbitModal();
@@ -75,12 +72,13 @@ document.addEventListener("keydown", (e) => {
 
 //  CLEAR ALL DATA
 function clearAllData() {
-  if (
-    confirm("⚠️ Are you sure? This will delete ALL tasks, notes, and habits.")
-  ) {
-    localStorage.removeItem("orbit-tasks");
-    localStorage.removeItem("orbit-notes");
-    localStorage.removeItem("orbit-habits");
+  if (confirm("⚠️ Are you sure?...")) {
+    const user = getCurrentUser();
+    if (!user) return;
+
+    localStorage.removeItem(`orbit-tasks-${user.id}`);
+    localStorage.removeItem(`orbit-notes-${user.id}`);
+    localStorage.removeItem(`orbit-habits-${user.id}`);
     alert("✅ All data cleared!");
     location.reload();
   }
@@ -133,8 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 5. SIDEBAR MODALS (Settings/Help/Stats/Profile/Notifications)
 document.addEventListener("DOMContentLoaded", () => {
-
-  // SETTINGS 
+  // SETTINGS
   const settingsBtn = document.getElementById("navSettings");
   if (settingsBtn) {
     settingsBtn.addEventListener("click", (e) => {
@@ -207,9 +204,16 @@ document.addEventListener("DOMContentLoaded", () => {
     statsBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-      const notes = JSON.parse(localStorage.getItem("orbit-notes") || "[]");
-      const habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
+      const user = getCurrentUser();
+      const tasks = JSON.parse(
+        localStorage.getItem(`orbit-tasks-${user.id}`) || "[]",
+      );
+      const notes = JSON.parse(
+        localStorage.getItem(`orbit-notes-${user.id}`) || "[]",
+      );
+      const habits = JSON.parse(
+        localStorage.getItem(`orbit-habits-${user.id}`) || "[]",
+      );
 
       const totalTasks = tasks.length;
       const doneTasks = tasks.filter((t) => t.completed).length;
@@ -277,9 +281,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const profile = document.getElementById("userProfile");
   if (profile) {
     profile.addEventListener("click", () => {
-      const tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-      const notes = JSON.parse(localStorage.getItem("orbit-notes") || "[]");
-      const habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
+      const user = getCurrentUser();
+      const tasks = JSON.parse(
+        localStorage.getItem(`orbit-tasks-${user.id}`) || "[]",
+      );
+      const notes = JSON.parse(
+        localStorage.getItem(`orbit-notes-${user.id}`) || "[]",
+      );
+      const habits = JSON.parse(
+        localStorage.getItem(`orbit-habits-${user.id}`) || "[]",
+      );
 
       showOrbitModal(
         "👤 Profile",
@@ -321,8 +332,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const notifBtn = document.getElementById("notificationsBtn");
   if (notifBtn) {
     notifBtn.addEventListener("click", () => {
-      const tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-      const habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
+      const user = getCurrentUser();
+      const tasks = JSON.parse(
+        localStorage.getItem(`orbit-tasks-${user.id}`) || "[]",
+      );
+      const notes = JSON.parse(
+        localStorage.getItem(`orbit-notes-${user.id}`) || "[]",
+      );
+      const habits = JSON.parse(
+        localStorage.getItem(`orbit-habits-${user.id}`) || "[]",
+      );
 
       const pendingTasks = tasks.filter((t) => !t.completed).length;
       const doneHabits = habits.filter((h) => h.doneToday).length;
@@ -384,11 +403,17 @@ document.addEventListener("keydown", (e) => {
 
 // 7. DASHBOARD-ONLY LOGIC (with checks)
 
-
+ let tasks = [];
+ let notes = [];
+ let habits = [];
+ 
 function loadData() {
-  tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-  notes = JSON.parse(localStorage.getItem("orbit-notes") || "[]");
-  habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
+  const user = getCurrentUser();
+  if (!user) return;
+
+  tasks = JSON.parse(localStorage.getItem(`orbit-tasks-${user.id}`) || "[]");
+  notes = JSON.parse(localStorage.getItem(`orbit-notes-${user.id}`) || "[]");
+  habits = JSON.parse(localStorage.getItem(`orbit-habits-${user.id}`) || "[]");
 }
 
 function updateStats() {
@@ -512,7 +537,6 @@ function updateSidebarCounts() {
 
 // 8. START DASHBOARD
 document.addEventListener("DOMContentLoaded", () => {
-
   const isDashboard =
     document.getElementById("statsSection") ||
     document.getElementById("recentTasksList");
@@ -530,5 +554,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("✅ Dashboard loaded!");
 });
-
-
