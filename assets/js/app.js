@@ -137,9 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
     settingsBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const tasks = JSON.parse(localStorage.getItem("orbit-tasks") || "[]");
-      const notes = JSON.parse(localStorage.getItem("orbit-notes") || "[]");
-      const habits = JSON.parse(localStorage.getItem("orbit-habits") || "[]");
+      const tasks = JSON.parse(
+        localStorage.getItem(`orbit-tasks-${user.id}`) || "[]",
+      );
+      const notes = JSON.parse(
+        localStorage.getItem(`orbit-notes-${user.id}`) || "[]",
+      );
+      const habits = JSON.parse(
+        localStorage.getItem(`orbit-habits-${user.id}`) || "[]",
+      );
       const isLight = document.body.classList.contains("light-mode");
 
       showOrbitModal(
