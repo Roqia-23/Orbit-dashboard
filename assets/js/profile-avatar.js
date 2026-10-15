@@ -1,8 +1,6 @@
-/* ============================================
-   ORBIT - Profile Avatar Generator
-   ============================================ */
 
-
+//ORBIT - Profile Avatar Generator
+  
 // 1. GENERATE AVATAR INITIAL
 
 function getAvatarInitial(name) {
@@ -24,16 +22,16 @@ function getAvatarColor(name) {
 
   // Predefined beautiful gradient colors
   const colors = [
-    "#6C8EFF", // Blue
-    "#FFB86B", // Orange
-    "#22C55E", // Green
-    "#EF4444", // Red
-    "#A78BFA", // Purple
-    "#EC4899", // Pink
-    "#F59E0B", // Amber
-    "#06B6D4", // Cyan
-    "#8B5CF6", // Violet
-    "#14B8A6", // Teal
+    "#6C8EFF", 
+    "#FFB86B", 
+    "#22C55E", 
+    "#EF4444", 
+    "#A78BFA", 
+    "#EC4899", 
+    "#F59E0B", 
+    "#06B6D4", 
+    "#8B5CF6", 
+    "#14B8A6", 
   ];
 
   // Hash the name to get consistent color

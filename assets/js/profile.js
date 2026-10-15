@@ -1,8 +1,6 @@
-/* ============================================
-   ORBIT PROFILE - Page Logic
-   ============================================ */
 
-
+//ORBIT PROFILE - Page Logic
+   
 // LOAD PROFILE DATA
 
 function loadProfile() {
