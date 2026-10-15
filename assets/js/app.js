@@ -137,6 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
     settingsBtn.addEventListener("click", (e) => {
       e.preventDefault();
 
+      const user = getCurrentUser();
+      if (!user) return; 
+      
       const tasks = JSON.parse(
         localStorage.getItem(`orbit-tasks-${user.id}`) || "[]",
       );
