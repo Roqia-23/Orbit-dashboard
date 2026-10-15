@@ -156,7 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `
                 <div class="modal-section">
                     <h6>Profile</h6>
-                    <p><strong>Name:</strong> Guest User</p>
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
                     <p><strong>Theme:</strong> ${isLight ? "Light" : "Dark"}</p>
                 </div>
                 <div class="modal-section">
