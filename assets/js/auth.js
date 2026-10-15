@@ -205,6 +205,13 @@ signupForm.addEventListener("submit", (e) => {
       "Name must be at least 2 characters",
     );
     hasError = true;
+  } else if (/[<>\/\\{}[\]()]/.test(name)) {
+    showError(
+      "signupName",
+      "signupNameError",
+      "Name contains invalid characters",
+    );
+    hasError = true;
   }
 
   // Email validation

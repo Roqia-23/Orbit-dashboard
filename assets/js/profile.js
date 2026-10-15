@@ -121,6 +121,12 @@ if (profileForm) {
       return;
     }
 
+    if (/[<>\/\\{}[\]()]/.test(newName)) {
+      nameError.textContent = "Name contains invalid characters";
+      nameError.classList.add("show");
+      return;
+    }
+
     // Update in users list
     const users = JSON.parse(localStorage.getItem("orbit-users") || "[]");
     const userIndex = users.findIndex((u) => u.id === user.id);
